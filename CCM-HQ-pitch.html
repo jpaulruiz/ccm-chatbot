@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>CCM HQ — Product Pitch</title>
+<style>
+  :root{
+    --bg:#0b0f17; --panel:#111726; --ink:#eef2f8; --muted:#9aa7bd;
+    --line:#1f2940; --brand:#3b82f6; --brand2:#6366f1;
+    --success:#22c55e; --warning:#f59e0b; --danger:#ef4444;
+    --card:#0f1422;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%}
+  body{
+    background:radial-gradient(1200px 800px at 70% -10%, #182238 0%, var(--bg) 55%);
+    color:var(--ink);
+    font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .deck{height:100vh;width:100vw;overflow:hidden;position:relative}
+  .slide{
+    position:absolute;inset:0;display:none;
+    padding:6vh 8vw;flex-direction:column;justify-content:center;
+    animation:fade .45s ease both;
+  }
+  .slide.active{display:flex}
+  @keyframes fade{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+  h1{font-size:clamp(2.4rem,6vw,5rem);line-height:1.02;margin:.2em 0;letter-spacing:-.03em;font-weight:800}
+  h2{font-size:clamp(1.6rem,3.6vw,2.8rem);margin:.1em 0 .4em;letter-spacing:-.02em;font-weight:750}
+  p.lead{font-size:clamp(1.05rem,1.9vw,1.5rem);color:var(--muted);max-width:54ch}
+  .eyebrow{text-transform:uppercase;letter-spacing:.22em;font-size:.78rem;color:var(--brand);font-weight:700;margin-bottom:.6em}
+  .grad{background:linear-gradient(100deg,var(--brand),var(--brand2));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .grid{display:grid;gap:1.1rem;margin-top:1.6rem}
+  .g2{grid-template-columns:repeat(2,1fr)}
+  .g3{grid-template-columns:repeat(3,1fr)}
+  .g4{grid-template-columns:repeat(4,1fr)}
+  .card{background:linear-gradient(180deg,var(--panel),var(--card));border:1px solid var(--line);border-radius:16px;padding:1.3rem 1.4rem}
+  .card h3{margin:.1em 0 .35em;font-size:1.15rem;letter-spacing:-.01em}
+  .card p{margin:0;color:var(--muted);font-size:.98rem}
+  .kpi{font-size:clamp(2rem,4.5vw,3.4rem);font-weight:800;letter-spacing:-.03em;line-height:1}
+  .kpi small{display:block;font-size:.78rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:.6em}
+  .delta{font-size:.85rem;color:var(--success);font-weight:600;margin-top:.4em}
+  .pill{display:inline-flex;align-items:center;gap:.5em;border:1px solid var(--line);background:#0e1626;border-radius:999px;padding:.4em .9em;font-size:.85rem;color:var(--muted)}
+  .dot{width:8px;height:8px;border-radius:50%}
+  ul.clean{list-style:none;padding:0;margin:1.2rem 0 0}
+  ul.clean li{display:flex;gap:.8em;padding:.55em 0;border-bottom:1px solid var(--line);color:var(--ink);font-size:1.05rem}
+  ul.clean li:last-child{border-bottom:0}
+  ul.clean li b{color:var(--brand)}
+  .check{color:var(--success);font-weight:800}
+  .row{display:flex;gap:1rem;flex-wrap:wrap;align-items:center}
+  .step{display:flex;gap:1rem;align-items:flex-start;padding:.7rem 0}
+  .num{flex:0 0 2.4rem;height:2.4rem;display:grid;place-items:center;border-radius:12px;background:linear-gradient(135deg,var(--brand),var(--brand2));font-weight:800}
+  .foot{position:absolute;left:8vw;right:8vw;bottom:3.4vh;display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-size:.8rem;border-top:1px solid var(--line);padding-top:1rem}
+  .logo{display:flex;align-items:center;gap:.6em;font-weight:800;letter-spacing:-.02em}
+  .logo .mark{width:28px;height:28px;border-radius:9px;background:linear-gradient(135deg,var(--brand),var(--brand2));display:grid;place-items:center;font-size:.85rem;color:#fff}
+  .bar{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--brand),var(--brand2));z-index:10;transition:width .3s}
+  .hint{position:fixed;bottom:14px;right:18px;color:#54607a;font-size:.72rem;z-index:10}
+  .big{font-size:clamp(1.2rem,2.2vw,1.7rem);line-height:1.4}
+  .tag{font-size:.72rem;padding:.2em .6em;border-radius:6px;border:1px solid var(--line);color:var(--muted)}
+  .ok{color:var(--success);border-color:#1c3a26;background:#0e1c14}
+  .warn{color:var(--warning);border-color:#3a2f12;background:#1c160a}
+  .quote{font-size:clamp(1.4rem,3vw,2.4rem);font-weight:650;letter-spacing:-.02em;max-width:24ch;line-height:1.2}
+  /* ---- app mockup ---- */
+  .window{width:100%;max-width:1100px;margin:1.2rem auto 0;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--card);box-shadow:0 30px 80px -30px rgba(0,0,0,.7)}
+  .chrome{display:flex;align-items:center;gap:.5em;padding:.6rem .9rem;background:#0c1220;border-bottom:1px solid var(--line)}
+  .chrome i{width:11px;height:11px;border-radius:50%;display:inline-block}
+  .url{flex:1;margin-left:.8em;background:#0a0f1b;border:1px solid var(--line);border-radius:7px;padding:.28em .8em;font-size:.74rem;color:var(--muted);font-family:ui-monospace,monospace}
+  .app{display:grid;grid-template-columns:190px 1fr;min-height:clamp(320px,52vh,520px)}
+  .side{background:#0c1220;border-right:1px solid var(--line);padding:1rem .7rem;display:flex;flex-direction:column;gap:.15rem}
+  .side .brand{display:flex;align-items:center;gap:.5em;font-weight:800;font-size:.92rem;padding:.2rem .5rem 1rem}
+  .nav{display:flex;align-items:center;gap:.65em;padding:.5em .7em;border-radius:8px;font-size:.82rem;color:var(--muted)}
+  .nav.on{background:linear-gradient(100deg,rgba(59,130,246,.18),rgba(99,102,241,.12));color:var(--ink);border:1px solid var(--line)}
+  .nav .ic{width:15px;height:15px;border-radius:4px;background:#1b2540}
+  .nav.on .ic{background:linear-gradient(135deg,var(--brand),var(--brand2))}
+  .main{padding:1.1rem 1.2rem;overflow:hidden}
+  .mh{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.9rem}
+  .mh small{color:var(--brand);text-transform:uppercase;letter-spacing:.18em;font-size:.6rem;font-weight:700}
+  .mh h4{margin:.25em 0 0;font-size:1.1rem;letter-spacing:-.02em}
+  .mh p{margin:.2em 0 0;color:var(--muted);font-size:.74rem;max-width:46ch}
+  .btn{background:linear-gradient(135deg,var(--brand),var(--brand2));color:#fff;border:0;border-radius:8px;padding:.45em .8em;font-size:.74rem;font-weight:600}
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:.6rem;margin-bottom:.9rem}
+  .st{background:#0e1626;border:1px solid var(--line);border-radius:10px;padding:.7rem .8rem}
+  .st .l{font-size:.58rem;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);font-weight:700}
+  .st .v{font-size:1.35rem;font-weight:800;letter-spacing:-.02em;margin-top:.25em}
+  .st .d{font-size:.62rem;color:var(--success);margin-top:.2em}
+  .panels{display:grid;grid-template-columns:1.7fr 1fr;gap:.6rem}
+  .pn{background:#0e1626;border:1px solid var(--line);border-radius:10px;padding:.8rem .9rem}
+  .pn h5{margin:0 0 .7rem;font-size:.78rem;letter-spacing:-.01em}
+  .chart{display:flex;align-items:flex-end;gap:5px;height:110px}
+  .chart span{flex:1;border-radius:4px 4px 0 0;background:linear-gradient(180deg,var(--brand),rgba(59,130,246,.15))}
+  .intent{display:flex;flex-direction:column;gap:.6rem}
+  .intent .row2{display:flex;justify-content:space-between;font-size:.72rem;color:var(--muted)}
+  .meter{height:5px;border-radius:3px;background:#1b2540;overflow:hidden;margin-top:.25em}
+  .meter i{display:block;height:100%;background:linear-gradient(90deg,var(--brand),var(--brand2))}
+  table{width:100%;border-collapse:collapse;margin-top:1.4rem;font-size:clamp(.82rem,1.3vw,1rem)}
+  th{text-align:left;text-transform:uppercase;letter-spacing:.12em;font-size:.68rem;color:var(--muted);font-weight:700;padding:.6rem .8rem;border-bottom:1px solid var(--line)}
+  td{padding:.85rem .8rem;border-bottom:1px solid var(--line);vertical-align:middle}
+  td.r,th.r{text-align:right;font-variant-numeric:tabular-nums}
+  tr:last-child td{border-bottom:0}
+  .site{display:flex;flex-direction:column;gap:.1em}
+  .site b{font-weight:650}
+  .site span{color:var(--muted);font-size:.82em}
+  .av{display:inline-grid;place-items:center;width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,#1c2740,#243355);font-weight:700;font-size:.78rem;margin-right:.6em}
+</style>
+</head>
+<body>
+<div class="bar" id="bar"></div>
+<div class="deck" id="deck">
+
+  <!-- 1 — TITLE -->
+  <section class="slide active">
+    <div class="logo" style="font-size:1.1rem;margin-bottom:2rem"><span class="mark">C</span> CCM HQ</div>
+    <div class="eyebrow">Internal product pitch</div>
+    <h1>One control room for<br><span class="grad">every chatbot, every site.</span></h1>
+    <p class="lead">CCM HQ turns a scatter of one-off chat widgets into a single, governed AI agent platform — built, measured and shipped from one place.</p>
+    <div class="row" style="margin-top:2rem">
+      <span class="pill"><span class="dot" style="background:var(--success)"></span> Live prototype</span>
+      <span class="pill">6 agents · 5 sites · mock workspace "Acme"</span>
+    </div>
+  </section>
+
+  <!-- 1b — APP MOCKUP -->
+  <section class="slide">
+    <div class="eyebrow">This is the app</div>
+    <div class="window">
+      <div class="chrome">
+        <i style="background:#ff5f56"></i><i style="background:#ffbd2e"></i><i style="background:#27c93f"></i>
+        <span class="url">app.ccm-hq.com/overview</span>
+      </div>
+      <div class="app">
+        <aside class="side">
+          <div class="brand"><span class="mark" style="width:22px;height:22px;border-radius:7px;background:linear-gradient(135deg,var(--brand),var(--brand2));display:grid;place-items:center;font-size:.7rem">C</span> CCM HQ</div>
+          <div class="nav on"><span class="ic"></span> Overview</div>
+          <div class="nav"><span class="ic"></span> Agents</div>
+          <div class="nav"><span class="ic"></span> Sites</div>
+          <div class="nav"><span class="ic"></span> Analytics</div>
+          <div class="nav"><span class="ic"></span> Integrations</div>
+          <div class="nav"><span class="ic"></span> Ideas</div>
+          <div class="nav" style="margin-top:auto"><span class="ic"></span> Settings</div>
+        </aside>
+        <div class="main">
+          <div class="mh">
+            <div>
+              <small>Workspace · Acme</small>
+              <h4>Good morning, Mira</h4>
+              <p>Six agents answering across five sites. Nothing's on fire — but Pier Studio's embed is flaky.</p>
+            </div>
+            <button class="btn">✦ Draft a new agent</button>
+          </div>
+          <div class="stats">
+            <div class="st"><div class="l">Conversations</div><div class="v">12,310</div><div class="d">▲ +18%</div></div>
+            <div class="st"><div class="l">Active agents</div><div class="v">6</div><div class="d">▲ +1</div></div>
+            <div class="st"><div class="l">Live sites</div><div class="v">5</div><div class="d">▲ +0</div></div>
+            <div class="st"><div class="l">Avg resolution</div><div class="v">71%</div><div class="d">▲ +4 pts</div></div>
+          </div>
+          <div class="panels">
+            <div class="pn">
+              <h5>Conversations · last 30 days</h5>
+              <div class="chart">
+                <span style="height:40%"></span><span style="height:55%"></span><span style="height:48%"></span>
+                <span style="height:65%"></span><span style="height:58%"></span><span style="height:78%"></span>
+                <span style="height:70%"></span><span style="height:88%"></span><span style="height:74%"></span>
+                <span style="height:95%"></span><span style="height:82%"></span><span style="height:100%"></span>
+              </div>
+            </div>
+            <div class="pn">
+              <h5>Top intents</h5>
+              <div class="intent">
+                <div><div class="row2"><span>Pricing</span><span>3,180</span></div><div class="meter"><i style="width:100%"></i></div></div>
+                <div><div class="row2"><span>How-to / docs</span><span>2,610</span></div><div class="meter"><i style="width:82%"></i></div></div>
+                <div><div class="row2"><span>Account / billing</span><span>1,940</span></div><div class="meter"><i style="width:61%"></i></div></div>
+                <div><div class="row2"><span>Bug report</span><span>1,120</span></div><div class="meter"><i style="width:35%"></i></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2 — PROBLEM -->
+  <section class="slide">
+    <div class="eyebrow">The problem</div>
+    <h2>Chatbots are sprawling — and nobody owns the whole picture.</h2>
+    <div class="grid g3">
+      <div class="card"><h3>Fragmented</h3><p>Every site ships its own widget, its own prompt, its own model. No shared standard.</p></div>
+      <div class="card"><h3>Blind</h3><p>No single view of volume, resolution or where bots are failing. Issues surface from customers, not dashboards.</p></div>
+      <div class="card"><h3>Slow to ship</h3><p>Spinning up a new agent means engineering time every single time. Ideas die in backlogs.</p></div>
+    </div>
+    <p class="lead" style="margin-top:1.8rem">Result: rising support cost, inconsistent brand voice, and AI spend nobody can fully account for.</p>
+  </section>
+
+  <!-- 3 — SOLUTION -->
+  <section class="slide">
+    <div class="eyebrow">The solution</div>
+    <h2><span class="grad">CCM HQ</span> — the management layer for AI agents.</h2>
+    <p class="lead">Build an agent once. Embed it on any site. Watch every conversation in one dashboard. Govern model, brand and budget centrally.</p>
+    <ul class="clean">
+      <li><span class="check">✓</span> <b>Build</b> agents from templates — sales concierge, support triage, docs answerer, lead qualifier.</li>
+      <li><span class="check">✓</span> <b>Deploy</b> with one embed snippet; assign which agents respond on which site.</li>
+      <li><span class="check">✓</span> <b>Measure</b> volume, resolution, intents and handoffs per site and per agent.</li>
+      <li><span class="check">✓</span> <b>Govern</b> default model, brand color, time zone and team from one workspace.</li>
+    </ul>
+  </section>
+
+  <!-- 4 — TRACTION / KPIs -->
+  <section class="slide">
+    <div class="eyebrow">Why it matters — prototype snapshot</div>
+    <h2>Signal from a single mock workspace.</h2>
+    <div class="grid g4">
+      <div class="card"><div class="kpi">18%<small>Conversations ↑</small></div><div class="delta">vs last 30d</div></div>
+      <div class="card"><div class="kpi">6<small>Active agents</small></div><div class="delta">+1 this month</div></div>
+      <div class="card"><div class="kpi">5<small>Live sites</small></div><div class="delta">one embed each</div></div>
+      <div class="card"><div class="kpi">+4<small>Avg resolution pts</small></div><div class="delta">auto-resolved</div></div>
+    </div>
+    <p class="lead" style="margin-top:1.8rem">Every point of resolution that an agent handles is a support ticket your team never touches.</p>
+  </section>
+
+  <!-- 5 — PRODUCT TOUR -->
+  <section class="slide">
+    <div class="eyebrow">The product</div>
+    <h2>Six surfaces, one workflow.</h2>
+    <div class="grid g3">
+      <div class="card"><span class="tag">Overview</span><h3>At-a-glance HQ</h3><p>Conversation trend, top intents, sites needing attention, recently updated agents.</p></div>
+      <div class="card"><span class="tag">Agents</span><h3>Build &amp; tune</h3><p>Every agent, its model, chat volume and resolution. Spin new ones from templates.</p></div>
+      <div class="card"><span class="tag">Sites</span><h3>Deploy anywhere</h3><p>Embed health per domain, assigned agents, 30-day chats and visitors.</p></div>
+      <div class="card"><span class="tag">Analytics</span><h3>Per-site proof</h3><p>Volume, engagement, handoffs and intent breakdown — exportable.</p></div>
+      <div class="card"><span class="tag">Integrations</span><h3>Make agents useful</h3><p>Slack, Webhooks, Stripe, Postgres, GitHub, Resend.</p></div>
+      <div class="card"><span class="tag">Ideas</span><h3>Ship the roadmap</h3><p>Capture, vote and track ideas from chats and retros to shipped.</p></div>
+    </div>
+  </section>
+
+  <!-- 5b — EXAMPLE SITES -->
+  <section class="slide">
+    <div class="eyebrow">Example workspace · Acme</div>
+    <h2>Sites under management.</h2>
+    <table>
+      <thead><tr>
+        <th>Site</th><th>Primary agent</th><th class="r">Agents</th>
+        <th class="r">Chats · 30d</th><th class="r">Visitors</th><th class="r">Embed</th>
+      </tr></thead>
+      <tbody>
+        <tr><td class="site"><b>Acme Marketing</b><span>acme.com</span></td><td>Sales Concierge</td><td class="r">3</td><td class="r">8.4k</td><td class="r">112k</td><td class="r"><span class="tag ok">healthy</span></td></tr>
+        <tr><td class="site"><b>Acme Docs</b><span>docs.acme.com</span></td><td>Docs Answerer</td><td class="r">2</td><td class="r">6.1k</td><td class="r">74k</td><td class="r"><span class="tag ok">healthy</span></td></tr>
+        <tr><td class="site"><b>Acme Help Center</b><span>help.acme.com</span></td><td>Support Triage</td><td class="r">2</td><td class="r">5.3k</td><td class="r">48k</td><td class="r"><span class="tag ok">healthy</span></td></tr>
+        <tr><td class="site"><b>Pier Studio</b><span>pierstudio.io</span></td><td>Lead Qualifier</td><td class="r">1</td><td class="r">2.2k</td><td class="r">39k</td><td class="r"><span class="tag warn">warning</span></td></tr>
+        <tr><td class="site"><b>Acme Status</b><span>status.acme.com</span></td><td>Status Bot</td><td class="r">1</td><td class="r">0.9k</td><td class="r">21k</td><td class="r"><span class="tag ok">healthy</span></td></tr>
+      </tbody>
+    </table>
+    <p class="lead" style="margin-top:1.4rem">One dashboard catches <b>Pier Studio's flaky embed</b> before customers ever complain.</p>
+  </section>
+
+  <!-- 5c — EXAMPLE AGENTS -->
+  <section class="slide">
+    <div class="eyebrow">Example workspace · Acme</div>
+    <h2>Agents doing the work.</h2>
+    <table>
+      <thead><tr>
+        <th>Agent</th><th>Model</th><th class="r">Status</th>
+        <th class="r">Chats</th><th class="r">Resolution</th>
+      </tr></thead>
+      <tbody>
+        <tr><td><span class="av">SC</span><b>Sales Concierge</b></td><td>google/gemini-3-flash</td><td class="r"><span class="tag ok">active</span></td><td class="r">3,180</td><td class="r">71%</td></tr>
+        <tr><td><span class="av">ST</span><b>Support Triage</b></td><td>google/gemini-3-flash</td><td class="r"><span class="tag ok">active</span></td><td class="r">2,940</td><td class="r">68%</td></tr>
+        <tr><td><span class="av">DA</span><b>Docs Answerer</b></td><td>anthropic/claude-opus-4-8</td><td class="r"><span class="tag ok">active</span></td><td class="r">2,610</td><td class="r">82%</td></tr>
+        <tr><td><span class="av">LQ</span><b>Lead Qualifier</b></td><td>google/gemini-3-flash</td><td class="r"><span class="tag ok">active</span></td><td class="r">1,420</td><td class="r">64%</td></tr>
+        <tr><td><span class="av">SB</span><b>Status Bot</b></td><td>google/gemini-3-flash</td><td class="r"><span class="tag warn">paused</span></td><td class="r">880</td><td class="r">59%</td></tr>
+        <tr><td><span class="av">BA</span><b>Billing Agent</b></td><td>anthropic/claude-opus-4-8</td><td class="r"><span class="tag">draft</span></td><td class="r">—</td><td class="r">—</td></tr>
+      </tbody>
+    </table>
+    <p class="lead" style="margin-top:1.4rem">Mix models per job — fast &amp; cheap for triage, top-tier for docs &amp; billing.</p>
+  </section>
+
+  <!-- 6 — HOW IT WORKS -->
+  <section class="slide">
+    <div class="eyebrow">How it works</div>
+    <h2>From zero to live agent in four steps.</h2>
+    <div class="grid" style="margin-top:1.4rem">
+      <div class="step"><div class="num">1</div><div><h3 style="margin:.1em 0">Pick a template</h3><p style="margin:0;color:var(--muted)">Start from a preconfigured agent — prompt, tools and model already wired.</p></div></div>
+      <div class="step"><div class="num">2</div><div><h3 style="margin:.1em 0">Connect tools</h3><p style="margin:0;color:var(--muted)">Give it Slack handoff, a webhook stream, or read-only DB lookups.</p></div></div>
+      <div class="step"><div class="num">3</div><div><h3 style="margin:.1em 0">Drop the embed</h3><p style="margin:0;color:var(--muted)">Paste one snippet on any site, assign the agent, go live.</p></div></div>
+      <div class="step"><div class="num">4</div><div><h3 style="margin:.1em 0">Measure &amp; iterate</h3><p style="margin:0;color:var(--muted)">Watch resolution and intents; feed gaps back into the idea board.</p></div></div>
+    </div>
+  </section>
+
+  <!-- 7 — GOVERNANCE / DIFFERENTIATION -->
+  <section class="slide">
+    <div class="eyebrow">Why us, not a widget</div>
+    <h2>Central governance is the moat.</h2>
+    <div class="grid g2">
+      <div class="card"><h3>One model policy</h3><p>Set a default model workspace-wide (e.g. <code>gemini-3-flash</code>). Control cost and quality in one place, not 12.</p></div>
+      <div class="card"><h3>Consistent brand</h3><p>Brand color, widget header and email handoffs centrally enforced across every site.</p></div>
+      <div class="card"><h3>Embed health</h3><p>See <span class="tag ok">healthy</span> / <span class="tag warn">warning</span> per domain before customers do.</p></div>
+      <div class="card"><h3>Built-in feedback loop</h3><p>Ideas board turns customer chat gaps directly into a ranked, shippable roadmap.</p></div>
+    </div>
+  </section>
+
+  <!-- 8 — THE ASK -->
+  <section class="slide">
+    <div class="eyebrow">The ask</div>
+    <h2>Greenlight a focused pilot.</h2>
+    <p class="lead">Working prototype already exists. Next step is a real pilot on a handful of our own properties to validate resolution lift and cost savings.</p>
+    <ul class="clean">
+      <li><b>1.</b> Approve a 1-team pilot across 3–5 internal sites.</li>
+      <li><b>2.</b> Pick a cost baseline so we can prove support-ticket deflection.</li>
+      <li><b>3.</b> 30-day readout: resolution %, handoff rate, cost per resolved chat.</li>
+    </ul>
+    <div class="quote grad" style="margin-top:2.2rem">"Run every chatbot like one product, not twelve side projects."</div>
+  </section>
+
+  <!-- 9 — CLOSE -->
+  <section class="slide" style="align-items:flex-start">
+    <div class="logo" style="font-size:1.1rem;margin-bottom:2rem"><span class="mark">C</span> CCM HQ</div>
+    <h1>Let's give every site<br><span class="grad">a smarter front door.</span></h1>
+    <p class="lead">Thank you. Demo &amp; Q&amp;A.</p>
+  </section>
+
+  <div class="foot">
+    <div class="logo"><span class="mark">C</span> CCM HQ</div>
+    <div><span id="pageno">1</span> / <span id="pagetotal">9</span></div>
+  </div>
+</div>
+<div class="hint">← → or Space to navigate · F fullscreen</div>
+
+<script>
+  const slides=[...document.querySelectorAll('.slide')];
+  let i=0;
+  const bar=document.getElementById('bar');
+  const no=document.getElementById('pageno');
+  document.getElementById('pagetotal').textContent=slides.length;
+  function show(n){
+    i=Math.max(0,Math.min(slides.length-1,n));
+    slides.forEach((s,k)=>s.classList.toggle('active',k===i));
+    bar.style.width=((i+1)/slides.length*100)+'%';
+    no.textContent=i+1;
+  }
+  function next(){show(i+1)} function prev(){show(i-1)}
+  addEventListener('keydown',e=>{
+    if(['ArrowRight','ArrowDown',' ','PageDown'].includes(e.key)){e.preventDefault();next()}
+    else if(['ArrowLeft','ArrowUp','PageUp'].includes(e.key)){e.preventDefault();prev()}
+    else if(e.key==='Home')show(0);
+    else if(e.key==='End')show(slides.length-1);
+    else if(e.key.toLowerCase()==='f'){document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen()}
+  });
+  addEventListener('click',e=>{ if(e.target.closest('a'))return; e.clientX>innerWidth*0.35?next():prev(); });
+  show(0);
+</script>
+</body>
+</html>
