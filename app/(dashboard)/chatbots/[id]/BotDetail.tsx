@@ -14,7 +14,7 @@ function getSnippet(framework: Framework, src: string): string {
     case 'HTML':
       return `<!-- Paste before </body> -->\n<script src="${src}" defer></script>`;
     case 'Next.js':
-      return `// app/layout.tsx\nimport Script from 'next/script';\n\nexport default function RootLayout({ children }) {\n  return (\n    <html>\n      <body>\n        {children}\n        <Script src="${src}" strategy="lazyOnload" />\n      </body>\n    </html>\n  );\n}`;
+      return `// app/layout.tsx\nimport Script from 'next/script';\n\nexport default function RootLayout({ children }) {\n  return (\n    <html>\n      <body>\n        {children}\n        <Script src="${src}" strategy="afterInteractive" />\n      </body>\n    </html>\n  );\n}`;
     case 'React':
       return `// Add to your root component (e.g. App.tsx)\nimport { useEffect } from 'react';\n\nuseEffect(() => {\n  const s = document.createElement('script');\n  s.src = '${src}';\n  s.defer = true;\n  document.body.appendChild(s);\n}, []);`;
     case 'Vue':
