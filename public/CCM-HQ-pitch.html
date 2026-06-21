@@ -176,8 +176,8 @@
     <p class="lead">An AI chatbot trained on each nursery's own content — fees, Ofsted reports, policies — embedded on every client site we already manage. One script tag. Zero configuration needed by the nursery.</p>
     <div class="row" style="margin-top:2rem">
       <span class="pill"><span class="dot" style="background:var(--success)"></span> Buildable in 4 weeks</span>
-      <span class="pill">Next.js · Supabase · OpenAI / Claude</span>
-      <span class="pill">Embed via &lt;script&gt; tag — like Tuqlas</span>
+      <span class="pill">Next.js · Supabase · OpenAI </span>
+      <span class="pill">Embed via &lt;script&gt;</span>
     </div>
   </section>
 
@@ -287,7 +287,7 @@
     <p class="lead" style="margin-top:1.8rem">"AI Marketing" is already on our services page. This makes it concrete, demonstrable, and live on the nursery websites we already control.</p>
   </section>
 
-  <!-- ⑥ THE PRODUCT — 6 feature cards matching Tuqlas -->
+  <!-- ⑥ THE PRODUCT — 6 feature cards -->
   <section class="slide">
     <div class="eyebrow">The product</div>
     <h2>Six surfaces, one workflow.</h2>
@@ -304,7 +304,7 @@
   <!-- ⑦ KNOWLEDGE PAGE MOCKUP -->
   <section class="slide">
     <div class="eyebrow">Knowledge — training the bot</div>
-    <h2>Upload content. The bot learns it instantly.</h2>
+    <h2>Paste or upload. The bot learns it instantly.</h2>
     <div class="window" style="max-width:980px">
       <div class="chrome">
         <i style="background:#ff5f56"></i><i style="background:#ffbd2e"></i><i style="background:#27c93f"></i>
@@ -326,161 +326,163 @@
           <div class="nav"><span class="ic"></span> Integrations</div>
         </aside>
         <div class="main">
-          <div class="mh" style="margin-bottom:.6rem">
+          <div class="mh" style="margin-bottom:.55rem">
             <div>
-              <small>Chatbots · Childcare Marketing · Knowledge tab</small>
-              <h4>Knowledge</h4>
-              <p>Upload files to use as context for this agent. Up to 3 files can be attached per chatbot.</p>
+              <small>Chatbots · Childcare Marketing · Knowledge</small>
+              <h4>Knowledge base</h4>
+              <p>The AI reads this to answer questions accurately. Paste or upload your content.</p>
+            </div>
+            <span style="font-size:.62rem;color:var(--muted)">2,841 chars</span>
+          </div>
+          <!-- File upload dropzone -->
+          <div class="kb-drop" style="padding:.7rem 1rem;margin-bottom:.55rem;flex-direction:row;justify-content:center;gap:.7rem">
+            <div class="kb-drop-icon">📄</div>
+            <div>
+              <p style="margin:0"><b>Click to upload</b> a .txt, .md, or .csv file</p>
+              <p style="margin:.2em 0 0;font-size:.6rem;opacity:.7">File contents will be added to the knowledge base</p>
             </div>
           </div>
-          <div class="kb-two">
-            <!-- LEFT: Add Knowledge -->
-            <div class="pn">
-              <h5 style="margin-bottom:.65rem">Add Knowledge</h5>
-              <div class="kb-tabs">
-                <button class="kb-tab on">File</button>
-                <button class="kb-tab">Text</button>
-                <button class="kb-tab">URL</button>
-              </div>
-              <div class="kb-formats">Supported: <b>.pdf .docx .pptx .txt .md .log</b> &nbsp;·&nbsp; Max <b>5MB</b></div>
-              <div class="kb-drop">
-                <div class="kb-drop-icon">📄</div>
-                <p><b>Click to upload</b> or drag &amp; drop<br>your nursery documents here</p>
-                <button class="kb-upload-btn">Choose file</button>
-              </div>
-            </div>
-            <!-- RIGHT: Your Knowledge Files -->
-            <div class="pn">
-              <div class="kb-files-head">
-                <h5>Your Knowledge Files</h5>
-                <span>3 files</span>
-              </div>
-              <div class="kb-file-row">
-                <div class="kf-icon">📋</div>
-                <div class="kf-name">CM_FeeGuide_2026.pdf</div>
-                <div class="kf-size">1.2 MB</div>
-                <span class="kf-badge tag ok">ready</span>
-              </div>
-              <div class="kb-file-row">
-                <div class="kf-icon">📋</div>
-                <div class="kf-name">Ofsted_Report_Outstanding.pdf</div>
-                <div class="kf-size">840 KB</div>
-                <span class="kf-badge tag ok">ready</span>
-              </div>
-              <div class="kb-file-row">
-                <div class="kf-icon">📄</div>
-                <div class="kf-name">Parent_Handbook_2026.docx</div>
-                <div class="kf-size">2.1 MB</div>
-                <span class="kf-badge tag warn">processing</span>
-              </div>
-            </div>
+          <!-- Knowledge textarea -->
+          <textarea style="width:100%;background:#0a0f1b;border:1px solid var(--line);border-radius:8px;padding:.55em .7em;font-size:.68rem;color:#cdd6e6;font-family:ui-monospace,monospace;resize:none;outline:none;line-height:1.55;display:block" rows="7" readonly>CHILDCARE MARKETING — Knowledge Base
+
+Fees &amp; Sessions:
+• Full day (8am–6pm): £62/day
+• Morning session (8am–1pm): £36/session
+• Afternoon (1pm–6pm): £32/session
+
+Ofsted Rating: Outstanding (2023)
+Opening Hours: Mon–Fri 8am–6pm, 51 weeks per year
+Free childcare: 15hrs (2yr) and 30hrs (3–4yr) funded places available</textarea>
+          <div style="display:flex;gap:.5rem;margin-top:.5rem">
+            <button class="btn" style="font-size:.72rem;padding:.38em .8em">Save knowledge</button>
+            <button class="btn ghost" style="font-size:.72rem;padding:.38em .8em;color:#ef4444;border-color:#3a1c1c">Clear all</button>
           </div>
         </div>
       </div>
     </div>
-    <p class="lead" style="margin-top:1rem">PDF, DOCX, PPTX, TXT, MD — all accepted. Uploaded files are chunked and embedded into pgvector automatically. The bot answers from this content only — never from generic AI knowledge.</p>
+    <p class="lead" style="margin-top:1rem">Plain text, markdown, or CSV — paste directly or upload a file. The AI reads it verbatim and uses it to answer parents accurately. No chunking or configuration needed.</p>
   </section>
 
-  <!-- ⑧ EMBED SLIDE — how the client / we paste the script tag -->
+  <!-- ⑧ EMBED SLIDE — framework picker + live preview -->
   <section class="slide">
     <div class="eyebrow">From bot → live on the nursery's site</div>
-    <h2>One click generates the embed. One paste makes it live.</h2>
-    <div class="window">
-      <div class="chrome">
-        <i style="background:#ff5f56"></i><i style="background:#ffbd2e"></i><i style="background:#27c93f"></i>
-        <span class="url">app.childcaremarketing.co.uk/chatbots/childcare-marketing</span>
-      </div>
-      <div class="app">
-        <aside class="side">
-          <div class="brand"><span class="mark" style="width:22px;height:22px;border-radius:7px;background:linear-gradient(135deg,var(--brand),var(--brand2));display:grid;place-items:center;font-size:.7rem">C</span> CM Chatbots</div>
-          <div class="grp">Workspace</div>
-          <div class="nav"><span class="ic"></span> Overview</div>
-          <div class="nav"><span class="ic"></span> Agents</div>
-          <div class="grp">Operate</div>
-          <div class="nav on"><span class="ic"></span> Chatbots</div>
-          <div class="subnav">↳ Setup</div>
-          <div class="subnav">↳ Knowledge</div>
-          <div class="subnav on">↳ Embed</div>
-          <div class="nav"><span class="ic"></span> Leads</div>
-          <div class="grp">Configure</div>
-          <div class="nav"><span class="ic"></span> Integrations</div>
-        </aside>
-        <div class="main">
-          <div class="mh">
-            <div>
-              <small>Childcare Marketing · childcaremarketing.co.uk</small>
-              <h4>Get embed code</h4>
-              <p>Configure how the bot appears on the site, then copy the snippet and paste it — or send it to the nursery.</p>
-            </div>
-            <span class="tag warn">embed not detected yet</span>
+    <h2>Select platform. Copy snippet. <span class="grad">Preview live.</span></h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.4rem;margin-top:1.2rem;align-items:start">
+
+      <!-- LEFT: Embed config card -->
+      <div style="background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden">
+        <div style="padding:.55rem .9rem;border-bottom:1px solid var(--line);background:#0c1220;display:flex;align-items:center;gap:.5em">
+          <i style="background:#ff5f56;width:9px;height:9px;border-radius:50%;display:inline-block"></i>
+          <i style="background:#ffbd2e;width:9px;height:9px;border-radius:50%;display:inline-block"></i>
+          <i style="background:#27c93f;width:9px;height:9px;border-radius:50%;display:inline-block"></i>
+          <span style="flex:1;background:#0a0f1b;border-radius:5px;padding:.22em .7em;font-size:.66rem;color:var(--muted);font-family:ui-monospace,monospace;margin-left:.5em">app.childcaremarketing.co.uk/chatbots/cm · Embed</span>
+        </div>
+        <div style="padding:.9rem 1rem">
+          <p style="font-size:.7rem;color:var(--muted);margin:0 0 .65rem">Select your platform, copy the snippet, and paste it into your site.</p>
+          <!-- Framework pills -->
+          <div style="display:flex;flex-wrap:wrap;gap:.3rem;margin-bottom:.7rem">
+            <button class="kb-tab on" style="padding:.28em .65em;font-size:.64rem">HTML</button>
+            <button class="kb-tab" style="padding:.28em .65em;font-size:.64rem">Next.js</button>
+            <button class="kb-tab" style="padding:.28em .65em;font-size:.64rem">React</button>
+            <button class="kb-tab" style="padding:.28em .65em;font-size:.64rem">Vue</button>
+            <button class="kb-tab" style="padding:.28em .65em;font-size:.64rem">Svelte</button>
+            <button class="kb-tab" style="padding:.28em .65em;font-size:.64rem">Astro</button>
+            <button class="kb-tab" style="padding:.28em .65em;font-size:.64rem">WordPress</button>
+            <button class="kb-tab" style="padding:.28em .65em;font-size:.64rem">Shopify</button>
+            <button class="kb-tab" style="padding:.28em .65em;font-size:.64rem">PHP</button>
+            <button class="kb-tab" style="padding:.28em .65em;font-size:.64rem">Laravel</button>
           </div>
-          <div class="embed-shell">
-            <div class="pn">
-              <h5>Widget config</h5>
-              <div class="field">
-                <label>Nursery</label>
-                <div class="val"><span class="av" style="width:20px;height:20px;font-size:.62rem;margin-right:.4em">CM</span>Childcare Marketing</div>
-              </div>
-              <div class="field">
-                <label>Allowed domain</label>
-                <div class="val" style="font-family:ui-monospace,monospace">childcaremarketing.co.uk</div>
-              </div>
-              <div class="field">
-                <label>Welcome message</label>
-                <div class="val" style="font-size:.72rem">Hi! I'm the Childcare Marketing assistant</div>
-              </div>
-              <div class="field">
-                <label>Accent color</label>
-                <div class="swatches">
-                  <span class="sw on" style="background:#2d9d6f"></span>
-                  <span class="sw" style="background:#3b82f6"></span>
-                  <span class="sw" style="background:#f59e0b"></span>
-                  <span class="sw" style="background:#ef4444"></span>
-                  <span class="sw" style="background:#a855f7"></span>
-                </div>
-              </div>
-              <button class="btn" style="width:100%;margin-top:.4rem;justify-content:center;display:flex" onclick="regenSnippet()">↻ Regenerate key</button>
+          <!-- Code card -->
+          <div class="codecard">
+            <div class="ch">
+              <span>HTML · embed snippet</span>
+              <button class="copybtn" id="copybtn" onclick="copySnippet()"><span id="copy-ic">⧉</span><span id="copy-label"> Copy</span></button>
             </div>
-            <div class="pn" style="display:flex;flex-direction:column">
-              <h5>Embed snippet — paste before <code style="font-family:ui-monospace,monospace">&lt;/body&gt;</code></h5>
-              <div class="codecard">
-                <div class="ch">
-                  <span id="snippet-key">key: cm_live_cm_a7x9k2m4</span>
-                  <button class="copybtn" id="copybtn" onclick="copySnippet()">
-                    <span id="copy-ic">⧉</span><span id="copy-label">Copy snippet</span>
-                  </button>
-                </div>
-<pre class="code" id="snippet-code"><span class="tk-cmt">&lt;!-- Childcare Marketing chatbot — Childcare Marketing --&gt;</span>
-<span class="tk-tag">&lt;script</span>
-  <span class="tk-attr">src</span>=<span class="tk-str">"https://chat.childcaremarketing.co.uk/bot.js"</span>
-  <span class="tk-attr">data-key</span>=<span class="tk-str">"cm_live_cm_a7x9k2m4"</span>
-  <span class="tk-attr">data-color</span>=<span class="tk-str">"#2d9d6f"</span>
-  <span class="tk-attr">defer</span>
-<span class="tk-tag">&gt;&lt;/script&gt;</span></pre>
-              </div>
-              <div class="install-steps">
-                <div class="istep done"><span class="ic">✓</span> Snippet generated for childcaremarketing.co.uk</div>
-                <div class="istep done"><span class="ic">✓</span> Copied to clipboard</div>
-                <div class="istep" id="step-pasted"><span class="ic">3</span> Paste into site before &lt;/body&gt; (we do this, or send to client)</div>
-                <div class="istep" id="step-live"><span class="ic">4</span> Waiting for first ping from childcaremarketing.co.uk…</div>
-              </div>
-              <div class="livecheck">
-                <span class="pulse"></span>
-                <span style="color:var(--muted)">Listening for embed on <b style="color:var(--ink);font-weight:650">childcaremarketing.co.uk</b> — confirms automatically once live.</span>
-              </div>
-            </div>
+<pre class="code" id="snippet-code"><span class="tk-cmt">&lt;!-- Paste before &lt;/body&gt; --&gt;</span>
+<span class="tk-tag">&lt;script</span> <span class="tk-attr">src</span>=<span class="tk-str">"https://app.childcaremarketing.co.uk/api/widget?botId=cm_abc123"</span> <span class="tk-attr">defer</span><span class="tk-tag">&gt;&lt;/script&gt;</span></pre>
+          </div>
+          <!-- Install steps -->
+          <div class="install-steps" style="margin-top:.6rem">
+            <div class="istep done"><span class="ic">✓</span> Snippet generated</div>
+            <div class="istep done"><span class="ic">✓</span> Copied to clipboard</div>
+            <div class="istep" id="step-pasted"><span class="ic">3</span> Paste into site before &lt;/body&gt;</div>
           </div>
         </div>
       </div>
+
+      <!-- RIGHT: Live preview panel -->
+      <div style="background:#0a0f1b;border:1px solid var(--line);border-radius:14px;padding:1rem">
+        <div style="font-size:.72rem;color:var(--muted);margin-bottom:.75rem;display:flex;align-items:center;gap:.5em;font-weight:600">
+          <span style="width:7px;height:7px;border-radius:50%;background:var(--success);display:inline-block;animation:pulse 1.8s infinite;flex-shrink:0"></span>
+          Live Preview — click the bubble
+        </div>
+        <!-- Browser mockup -->
+        <div style="border:1px solid var(--line);border-radius:10px;overflow:hidden">
+          <!-- Chrome bar -->
+          <div style="padding:.4rem .7rem;background:#0c1220;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:.4em">
+            <span style="width:9px;height:9px;border-radius:50%;background:rgba(255,95,86,.7);display:inline-block"></span>
+            <span style="width:9px;height:9px;border-radius:50%;background:rgba(255,189,46,.7);display:inline-block"></span>
+            <span style="width:9px;height:9px;border-radius:50%;background:rgba(39,201,63,.7);display:inline-block"></span>
+            <span style="flex:1;background:#0a0f1b;border-radius:5px;padding:.22em .65em;font-size:.64rem;color:#54607a;font-family:ui-monospace,monospace;margin-left:.4em">🌐 yourwebsite.com</span>
+          </div>
+          <!-- Fake website content + open chat -->
+          <div style="position:relative;background:#070b12;height:clamp(220px,26vh,300px);overflow:hidden">
+            <!-- Skeleton website behind -->
+            <div style="padding:.7rem .8rem;opacity:.25;pointer-events:none">
+              <div style="height:9px;width:45%;background:#1f2940;border-radius:4px;margin-bottom:.35rem"></div>
+              <div style="height:5px;width:90%;background:#1f2940;border-radius:3px;margin-bottom:.2rem"></div>
+              <div style="height:5px;width:70%;background:#1f2940;border-radius:3px;margin-bottom:.2rem"></div>
+              <div style="height:40px;width:100%;background:#1f2940;border-radius:6px;margin-top:.4rem"></div>
+            </div>
+            <!-- Open chat widget panel -->
+            <div style="position:absolute;bottom:0;right:0;width:200px;height:100%;display:flex;flex-direction:column;border-left:1px solid var(--line);background:#0b0f17;box-shadow:-6px 0 24px rgba(0,0,0,.5)">
+              <!-- Chat header -->
+              <div style="padding:.45rem .6rem;background:linear-gradient(135deg,var(--brand),var(--brand2));display:flex;align-items:center;gap:.4em;flex-shrink:0">
+                <span style="width:20px;height:20px;border-radius:50%;background:rgba(255,255,255,.2);display:grid;place-items:center;font-size:.6rem;font-weight:800;color:#fff">C</span>
+                <div>
+                  <div style="font-size:.62rem;font-weight:700;color:#fff">CM Assistant</div>
+                  <div style="font-size:.5rem;color:rgba(255,255,255,.7)">AI assistant · Online</div>
+                </div>
+              </div>
+              <!-- Messages -->
+              <div style="flex:1;overflow:hidden;padding:.5rem .5rem;display:flex;flex-direction:column;gap:.4rem">
+                <!-- Bot greeting -->
+                <div style="display:flex;align-items:flex-start;gap:.3em">
+                  <span style="width:16px;height:16px;border-radius:50%;background:linear-gradient(135deg,var(--brand),var(--brand2));display:grid;place-items:center;font-size:.46rem;font-weight:800;color:#fff;flex-shrink:0">C</span>
+                  <div style="background:#111726;border:1px solid var(--line);border-radius:8px;border-bottom-left-radius:2px;padding:.3em .45em;font-size:.56rem;color:#eef2f8;line-height:1.4;max-width:130px">Hi! What would you like to know about our nursery?</div>
+                </div>
+                <!-- User message -->
+                <div style="display:flex;justify-content:flex-end">
+                  <div style="background:linear-gradient(135deg,var(--brand),var(--brand2));border-radius:8px;border-bottom-right-radius:2px;padding:.3em .45em;font-size:.56rem;color:#fff;line-height:1.4;max-width:120px">What are your fees?</div>
+                </div>
+                <!-- Bot reply -->
+                <div style="display:flex;align-items:flex-start;gap:.3em">
+                  <span style="width:16px;height:16px;border-radius:50%;background:linear-gradient(135deg,var(--brand),var(--brand2));display:grid;place-items:center;font-size:.46rem;font-weight:800;color:#fff;flex-shrink:0">C</span>
+                  <div style="background:#111726;border:1px solid var(--line);border-radius:8px;border-bottom-left-radius:2px;padding:.3em .45em;font-size:.56rem;color:#eef2f8;line-height:1.4;max-width:130px">Full day is £62, mornings £36. We also accept 30-hour funded places!</div>
+                </div>
+              </div>
+              <!-- Input bar -->
+              <div style="padding:.35rem .4rem;border-top:1px solid var(--line);background:#0c1220;display:flex;gap:.3em;flex-shrink:0">
+                <div style="flex:1;background:#0a0f1b;border:1px solid var(--line);border-radius:6px;padding:.28em .5em;font-size:.52rem;color:#54607a">Type a message…</div>
+                <div style="width:22px;height:22px;border-radius:6px;background:linear-gradient(135deg,var(--brand),var(--brand2));display:grid;place-items:center;font-size:.6rem;color:#fff">↑</div>
+              </div>
+            </div>
+            <!-- Bubble (closed state indicator) -->
+            <div style="position:absolute;bottom:14px;right:212px;width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(--brand),var(--brand2));display:grid;place-items:center;font-size:.7rem;box-shadow:0 4px 14px rgba(0,0,0,.6)">✕</div>
+          </div>
+        </div>
+        <p style="font-size:.65rem;color:#54607a;margin:.7rem 0 0;text-align:center">This is how the widget appears on your site</p>
+      </div>
+
     </div>
-    <p class="lead" style="margin-top:1.2rem">No dev ticket needed. We paste one line on sites we manage. Nurseries who manage their own CMS can paste it themselves.</p>
+    <p class="lead" style="margin-top:1.2rem">10 frameworks supported — one click switches the snippet. The live preview reflects the real widget colour and greeting.</p>
   </section>
 
-  <!-- ⑧ HOW THE CLIENT / WE INSTALL THE SCRIPT TAG -->
+  <!-- ⑨ SCRIPT TAG INSTALLATION — three common platforms -->
   <section class="slide">
-    <div class="eyebrow">Script tag installation — three scenarios</div>
+    <div class="eyebrow">Script tag installation — three common platforms</div>
     <h2>Works everywhere. Paste once, live forever.</h2>
-    <p class="lead">The same snippet works across every platform. The bot loads only on the permitted domain.</p>
+    <p class="lead">10 frameworks supported — the dashboard generates the correct snippet for each automatically.</p>
     <div class="install-grid">
       <div class="install-card">
         <div class="ic-head">
@@ -489,48 +491,46 @@
         </div>
         <pre class="code"><span class="tk-cmt">&lt;!-- Paste before &lt;/body&gt; --&gt;</span>
 <span class="tk-tag">&lt;script</span>
-  <span class="tk-attr">src</span>=<span class="tk-str">"https://chat.childcaremarketing
-.co.uk/bot.js"</span>
-  <span class="tk-attr">data-key</span>=<span class="tk-str">"YOUR_EMBED_KEY"</span>
-  <span class="tk-attr">data-color</span>=<span class="tk-str">"#2d9d6f"</span>
+  <span class="tk-attr">src</span>=<span class="tk-str">"https://app.childcaremarketing
+.co.uk/api/widget?botId=cm_abc"</span>
   <span class="tk-attr">defer</span>
 <span class="tk-tag">&gt;&lt;/script&gt;</span></pre>
       </div>
       <div class="install-card">
         <div class="ic-head">
-          <span>WordPress</span>
-          <span class="tag">via WPCode plugin</span>
+          <span>Next.js</span>
+          <span class="tag">app/layout.tsx</span>
         </div>
-        <pre class="code"><span class="tk-cmt">// WPCode → Add Snippet
-// → Insert in Footer</span>
+        <pre class="code"><span class="tk-cmt">import Script from 'next/script';</span>
 
-<span class="tk-cmt">// Paste the snippet as-is.
-// No theme file edits needed.
-// Works with Elementor, Divi,
-// Beaver Builder, etc.</span>
-
-<span class="tk-cmt">// Or use any "Header &amp; Footer
-// Scripts" plugin.</span></pre>
+<span class="tk-cmt">// Add inside &lt;body&gt; in root layout</span>
+<span class="tk-tag">&lt;Script</span>
+  <span class="tk-attr">src</span>=<span class="tk-str">"https://app.childcaremarketing
+.co.uk/api/widget?botId=cm_abc"</span>
+  <span class="tk-attr">strategy</span>=<span class="tk-str">"afterInteractive"</span>
+<span class="tk-tag">/&gt;</span></pre>
       </div>
       <div class="install-card">
         <div class="ic-head">
-          <span>Webflow / Shopify</span>
-          <span class="tag">site-wide</span>
+          <span>WordPress</span>
+          <span class="tag">functions.php</span>
         </div>
-        <pre class="code"><span class="tk-cmt">// Webflow:
-// Project Settings → Custom Code
-// → Footer Code → paste snippet
-
-// Shopify:
-// Online Store → Themes → Edit code
-// → theme.liquid before &lt;/body&gt;
-// → paste snippet
-
-// Both update instantly — no
-// redeploy or cache clear needed.</span></pre>
+        <pre class="code"><span class="tk-cmt">function ccm_chatbot_script() {
+  wp_enqueue_script(
+    'ccm-chatbot',
+    'https://app.childcaremarketing
+.co.uk/api/widget?botId=cm_abc',
+    [], null,
+    true // load in footer
+  );
+}
+add_action(
+  'wp_enqueue_scripts',
+  'ccm_chatbot_script'
+);</span></pre>
       </div>
     </div>
-    <p class="lead" style="margin-top:1.4rem">The <b style="color:var(--ink)">data-key</b> ties the widget to one specific bot and one permitted domain. A stolen key on a different site returns nothing.</p>
+    <p class="lead" style="margin-top:1.4rem">Also supported: <b style="color:var(--ink)">React, Vue, Svelte, Astro, Shopify, PHP, Laravel</b> — each with the correct snippet generated automatically in the dashboard.</p>
   </section>
 
   <!-- ⑨ NURSERIES TABLE -->
