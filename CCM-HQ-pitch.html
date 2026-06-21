@@ -3,18 +3,18 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>CCM HQ — Product Pitch</title>
+<title>Childcare Marketing — AI Chatbot Pitch</title>
 <style>
   :root{
     --bg:#0b0f17; --panel:#111726; --ink:#eef2f8; --muted:#9aa7bd;
-    --line:#1f2940; --brand:#3b82f6; --brand2:#6366f1;
+    --line:#1f2940; --brand:#2d9d6f; --brand2:#3b82f6;
     --success:#22c55e; --warning:#f59e0b; --danger:#ef4444;
     --card:#0f1422;
   }
   *{box-sizing:border-box}
   html,body{margin:0;height:100%}
   body{
-    background:radial-gradient(1200px 800px at 70% -10%, #182238 0%, var(--bg) 55%);
+    background:radial-gradient(1200px 800px at 70% -10%, #16261f 0%, var(--bg) 55%);
     color:var(--ink);
     font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;
     -webkit-font-smoothing:antialiased;
@@ -30,7 +30,7 @@
   h1{font-size:clamp(2.4rem,6vw,5rem);line-height:1.02;margin:.2em 0;letter-spacing:-.03em;font-weight:800}
   h2{font-size:clamp(1.6rem,3.6vw,2.8rem);margin:.1em 0 .4em;letter-spacing:-.02em;font-weight:750}
   p.lead{font-size:clamp(1.05rem,1.9vw,1.5rem);color:var(--muted);max-width:54ch}
-  .eyebrow{text-transform:uppercase;letter-spacing:.22em;font-size:.78rem;color:var(--brand);font-weight:700;margin-bottom:.6em}
+  .eyebrow{text-transform:uppercase;letter-spacing:.22em;font-size:.78rem;color:var(--brand2);font-weight:700;margin-bottom:.6em}
   .grad{background:linear-gradient(100deg,var(--brand),var(--brand2));-webkit-background-clip:text;background-clip:text;color:transparent}
   .grid{display:grid;gap:1.1rem;margin-top:1.6rem}
   .g2{grid-template-columns:repeat(2,1fr)}
@@ -47,7 +47,7 @@
   ul.clean{list-style:none;padding:0;margin:1.2rem 0 0}
   ul.clean li{display:flex;gap:.8em;padding:.55em 0;border-bottom:1px solid var(--line);color:var(--ink);font-size:1.05rem}
   ul.clean li:last-child{border-bottom:0}
-  ul.clean li b{color:var(--brand)}
+  ul.clean li b{color:var(--brand2)}
   .check{color:var(--success);font-weight:800}
   .row{display:flex;gap:1rem;flex-wrap:wrap;align-items:center}
   .step{display:flex;gap:1rem;align-items:flex-start;padding:.7rem 0}
@@ -61,8 +61,7 @@
   .tag{font-size:.72rem;padding:.2em .6em;border-radius:6px;border:1px solid var(--line);color:var(--muted)}
   .ok{color:var(--success);border-color:#1c3a26;background:#0e1c14}
   .warn{color:var(--warning);border-color:#3a2f12;background:#1c160a}
-  .quote{font-size:clamp(1.4rem,3vw,2.4rem);font-weight:650;letter-spacing:-.02em;max-width:24ch;line-height:1.2}
-  /* ---- app mockup ---- */
+  .quote{font-size:clamp(1.4rem,3vw,2.4rem);font-weight:650;letter-spacing:-.02em;max-width:26ch;line-height:1.2}
   .window{width:100%;max-width:1100px;margin:1.2rem auto 0;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--card);box-shadow:0 30px 80px -30px rgba(0,0,0,.7)}
   .chrome{display:flex;align-items:center;gap:.5em;padding:.6rem .9rem;background:#0c1220;border-bottom:1px solid var(--line)}
   .chrome i{width:11px;height:11px;border-radius:50%;display:inline-block}
@@ -71,15 +70,18 @@
   .side{background:#0c1220;border-right:1px solid var(--line);padding:1rem .7rem;display:flex;flex-direction:column;gap:.15rem}
   .side .brand{display:flex;align-items:center;gap:.5em;font-weight:800;font-size:.92rem;padding:.2rem .5rem 1rem}
   .nav{display:flex;align-items:center;gap:.65em;padding:.5em .7em;border-radius:8px;font-size:.82rem;color:var(--muted)}
-  .nav.on{background:linear-gradient(100deg,rgba(59,130,246,.18),rgba(99,102,241,.12));color:var(--ink);border:1px solid var(--line)}
+  .nav.on{background:linear-gradient(100deg,rgba(45,157,111,.18),rgba(59,130,246,.12));color:var(--ink);border:1px solid var(--line)}
   .nav .ic{width:15px;height:15px;border-radius:4px;background:#1b2540}
   .nav.on .ic{background:linear-gradient(135deg,var(--brand),var(--brand2))}
+  .subnav{display:flex;align-items:center;gap:.5em;padding:.38em .7em .38em 2.1em;border-radius:8px;font-size:.76rem;color:var(--muted)}
+  .subnav.on{background:linear-gradient(100deg,rgba(45,157,111,.14),rgba(59,130,246,.08));color:var(--ink);border:1px solid var(--line)}
   .main{padding:1.1rem 1.2rem;overflow:hidden}
   .mh{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.9rem}
-  .mh small{color:var(--brand);text-transform:uppercase;letter-spacing:.18em;font-size:.6rem;font-weight:700}
+  .mh small{color:var(--brand2);text-transform:uppercase;letter-spacing:.18em;font-size:.6rem;font-weight:700}
   .mh h4{margin:.25em 0 0;font-size:1.1rem;letter-spacing:-.02em}
   .mh p{margin:.2em 0 0;color:var(--muted);font-size:.74rem;max-width:46ch}
-  .btn{background:linear-gradient(135deg,var(--brand),var(--brand2));color:#fff;border:0;border-radius:8px;padding:.45em .8em;font-size:.74rem;font-weight:600}
+  .btn{background:linear-gradient(135deg,var(--brand),var(--brand2));color:#fff;border:0;border-radius:8px;padding:.45em .8em;font-size:.74rem;font-weight:600;cursor:pointer;font-family:inherit}
+  .btn.ghost{background:#0e1626;border:1px solid var(--line);color:var(--ink)}
   .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:.6rem;margin-bottom:.9rem}
   .st{background:#0e1626;border:1px solid var(--line);border-radius:10px;padding:.7rem .8rem}
   .st .l{font-size:.58rem;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);font-weight:700}
@@ -89,7 +91,7 @@
   .pn{background:#0e1626;border:1px solid var(--line);border-radius:10px;padding:.8rem .9rem}
   .pn h5{margin:0 0 .7rem;font-size:.78rem;letter-spacing:-.01em}
   .chart{display:flex;align-items:flex-end;gap:5px;height:110px}
-  .chart span{flex:1;border-radius:4px 4px 0 0;background:linear-gradient(180deg,var(--brand),rgba(59,130,246,.15))}
+  .chart span{flex:1;border-radius:4px 4px 0 0;background:linear-gradient(180deg,var(--brand),rgba(45,157,111,.15))}
   .intent{display:flex;flex-direction:column;gap:.6rem}
   .intent .row2{display:flex;justify-content:space-between;font-size:.72rem;color:var(--muted)}
   .meter{height:5px;border-radius:3px;background:#1b2540;overflow:hidden;margin-top:.25em}
@@ -103,75 +105,130 @@
   .site b{font-weight:650}
   .site span{color:var(--muted);font-size:.82em}
   .av{display:inline-grid;place-items:center;width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,#1c2740,#243355);font-weight:700;font-size:.78rem;margin-right:.6em}
+  .embed-shell{display:grid;grid-template-columns:230px 1fr;gap:.6rem}
+  .field{margin-bottom:.7rem}
+  .field label{display:block;font-size:.62rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);font-weight:700;margin-bottom:.35em}
+  .field .val{background:#0a0f1b;border:1px solid var(--line);border-radius:8px;padding:.5em .7em;font-size:.8rem;color:var(--ink)}
+  .swatches{display:flex;gap:.4em;margin-top:.2em}
+  .sw{width:20px;height:20px;border-radius:50%;border:2px solid transparent;cursor:pointer}
+  .sw.on{border-color:#fff}
+  .codecard{background:#0a0f1b;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+  .codecard .ch{display:flex;align-items:center;justify-content:space-between;padding:.55em .8em;border-bottom:1px solid var(--line);background:#0c1220}
+  .codecard .ch span{font-size:.66rem;color:var(--muted);font-family:ui-monospace,monospace;letter-spacing:.02em}
+  .copybtn{display:flex;align-items:center;gap:.4em;background:#0e1626;border:1px solid var(--line);color:var(--ink);border-radius:7px;padding:.32em .65em;font-size:.68rem;cursor:pointer;font-family:inherit;transition:background .15s,border-color .15s}
+  .copybtn:hover{background:#152038}
+  .copybtn.copied{background:#0e1c14;border-color:#1c3a26;color:var(--success)}
+  pre.code{margin:0;padding:1em 1.1em;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.76rem;line-height:1.7;color:#cdd6e6;overflow:auto;white-space:pre}
+  .code .tk-tag{color:#7aa2f7}
+  .code .tk-attr{color:#9aa7bd}
+  .code .tk-str{color:#9ece6a}
+  .code .tk-cmt{color:#54607a;font-style:italic}
+  .install-steps{display:flex;flex-direction:column;gap:.5rem;margin-top:.7rem}
+  .istep{display:flex;align-items:center;gap:.6em;font-size:.74rem;color:var(--muted)}
+  .istep .ic{width:18px;height:18px;border-radius:50%;background:#0e1626;border:1px solid var(--line);display:grid;place-items:center;font-size:.6rem;font-weight:800;color:var(--ink);flex:0 0 auto}
+  .istep.done .ic{background:linear-gradient(135deg,var(--brand),var(--brand2));border-color:transparent;color:#fff}
+  .livecheck{display:flex;align-items:center;gap:.5em;margin-top:.8em;font-size:.74rem}
+  .livecheck .pulse{width:8px;height:8px;border-radius:50%;background:var(--success);box-shadow:0 0 0 0 rgba(34,197,94,.6);animation:pulse 1.8s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(34,197,94,.55)}70%{box-shadow:0 0 0 8px rgba(34,197,94,0)}100%{box-shadow:0 0 0 0 rgba(34,197,94,0)}}
+  /* Knowledge page styles */
+  .kb-tabs{display:flex;gap:.3rem;margin-bottom:.85rem}
+  .kb-tab{padding:.38em .85em;border-radius:7px;font-size:.72rem;font-weight:600;cursor:pointer;border:1px solid var(--line);background:#0a0f1b;color:var(--muted);font-family:inherit}
+  .kb-tab.on{background:linear-gradient(135deg,var(--brand),var(--brand2));color:#fff;border-color:transparent}
+  .kb-formats{font-size:.62rem;color:var(--muted);letter-spacing:.02em;margin-bottom:.65rem}
+  .kb-formats b{color:var(--ink);font-weight:600}
+  .kb-drop{border:1.5px dashed var(--line);border-radius:10px;padding:1.4rem 1rem;display:flex;flex-direction:column;align-items:center;gap:.45rem;background:#090e1a;cursor:pointer;transition:border-color .2s}
+  .kb-drop:hover{border-color:var(--brand)}
+  .kb-drop-icon{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,rgba(45,157,111,.18),rgba(59,130,246,.12));border:1px solid var(--line);display:grid;place-items:center;font-size:1rem}
+  .kb-drop p{margin:0;font-size:.72rem;color:var(--muted);text-align:center;line-height:1.4}
+  .kb-drop p b{color:var(--brand);font-weight:600}
+  .kb-upload-btn{margin-top:.3rem;background:linear-gradient(135deg,var(--brand),var(--brand2));color:#fff;border:0;border-radius:7px;padding:.38em .85em;font-size:.72rem;font-weight:600;cursor:pointer;font-family:inherit}
+  .kb-files-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:.6rem}
+  .kb-files-head h5{margin:0;font-size:.78rem;letter-spacing:-.01em}
+  .kb-files-head span{font-size:.62rem;color:var(--muted)}
+  .kb-empty{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.4rem;padding:1.4rem 0;color:var(--muted)}
+  .kb-empty .ke-icon{font-size:1.5rem;opacity:.35}
+  .kb-empty p{margin:0;font-size:.72rem;text-align:center}
+  .kb-file-row{display:flex;align-items:center;gap:.7rem;padding:.5rem .5rem;border-radius:8px;background:#0a0f1b;border:1px solid var(--line);margin-bottom:.4rem}
+  .kb-file-row .kf-icon{width:28px;height:28px;border-radius:6px;background:linear-gradient(135deg,rgba(45,157,111,.2),rgba(59,130,246,.15));border:1px solid var(--line);display:grid;place-items:center;font-size:.7rem;flex:0 0 auto}
+  .kb-file-row .kf-name{font-size:.72rem;font-weight:600;flex:1}
+  .kb-file-row .kf-size{font-size:.62rem;color:var(--muted)}
+  .kb-file-row .kf-badge{font-size:.58rem;padding:.15em .5em;border-radius:5px;font-weight:700}
+  .kb-two{display:grid;grid-template-columns:1fr 1fr;gap:.7rem}
+  /* Script tag install cards */
+  .install-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem;margin-top:1.4rem}
+  .install-card{background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+  .install-card .ic-head{padding:.6rem .9rem;border-bottom:1px solid var(--line);background:#0c1220;display:flex;align-items:center;justify-content:space-between}
+  .install-card .ic-head span{font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+  .install-card pre{margin:0;padding:.8em 1em;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.7rem;line-height:1.7;color:#cdd6e6;white-space:pre-wrap;word-break:break-all}
 </style>
 </head>
 <body>
 <div class="bar" id="bar"></div>
 <div class="deck" id="deck">
 
-  <!-- 1 — TITLE -->
+  <!-- ① TITLE -->
   <section class="slide active">
-    <div class="logo" style="font-size:1.1rem;margin-bottom:2rem"><span class="mark">C</span> CCM HQ</div>
-    <div class="eyebrow">Internal product pitch</div>
-    <h1>One control room for<br><span class="grad">every chatbot, every site.</span></h1>
-    <p class="lead">CCM HQ turns a scatter of one-off chat widgets into a single, governed AI agent platform — built, measured and shipped from one place.</p>
+    <div class="logo" style="font-size:1.1rem;margin-bottom:2rem"><span class="mark">C</span> Childcare Marketing</div>
+    <div class="eyebrow">Internal product pitch · 2026</div>
+    <h1>Your nursery, always<br><span class="grad">answering parents.</span></h1>
+    <p class="lead">An AI chatbot trained on each nursery's own content — fees, Ofsted reports, policies — embedded on every client site we already manage. One script tag. Zero configuration needed by the nursery.</p>
     <div class="row" style="margin-top:2rem">
-      <span class="pill"><span class="dot" style="background:var(--success)"></span> Live prototype</span>
-      <span class="pill">6 agents · 5 sites · mock workspace "Acme"</span>
+      <span class="pill"><span class="dot" style="background:var(--success)"></span> Buildable in 4 weeks</span>
+      <span class="pill">Next.js · Supabase · OpenAI / Claude</span>
+      <span class="pill">Embed via &lt;script&gt; tag — like Tuqlas</span>
     </div>
   </section>
 
-  <!-- 1b — APP MOCKUP -->
+  <!-- ② DASHBOARD MOCKUP -->
   <section class="slide">
     <div class="eyebrow">This is the app</div>
     <div class="window">
       <div class="chrome">
         <i style="background:#ff5f56"></i><i style="background:#ffbd2e"></i><i style="background:#27c93f"></i>
-        <span class="url">app.ccm-hq.com/overview</span>
+        <span class="url">app.childcaremarketing.co.uk/dashboard</span>
       </div>
       <div class="app">
         <aside class="side">
-          <div class="brand"><span class="mark" style="width:22px;height:22px;border-radius:7px;background:linear-gradient(135deg,var(--brand),var(--brand2));display:grid;place-items:center;font-size:.7rem">C</span> CCM HQ</div>
+          <div class="brand"><span class="mark" style="width:22px;height:22px;border-radius:7px;background:linear-gradient(135deg,var(--brand),var(--brand2));display:grid;place-items:center;font-size:.7rem">C</span> CM Chatbots</div>
           <div class="nav on"><span class="ic"></span> Overview</div>
-          <div class="nav"><span class="ic"></span> Agents</div>
-          <div class="nav"><span class="ic"></span> Sites</div>
+          <div class="nav"><span class="ic"></span> Chatbots</div>
+          <div class="nav"><span class="ic"></span> Knowledge</div>
+          <div class="nav"><span class="ic"></span> Leads</div>
           <div class="nav"><span class="ic"></span> Analytics</div>
-          <div class="nav"><span class="ic"></span> Integrations</div>
-          <div class="nav"><span class="ic"></span> Ideas</div>
-          <div class="nav" style="margin-top:auto"><span class="ic"></span> Settings</div>
+          <div class="nav"><span class="ic"></span> Integration</div>
         </aside>
         <div class="main">
           <div class="mh">
             <div>
-              <small>Workspace · Acme</small>
-              <h4>Good morning, Mira</h4>
-              <p>Six agents answering across five sites. Nothing's on fire — but Pier Studio's embed is flaky.</p>
+              <small>Workspace · Childcare Marketing</small>
+              <h4>Good morning</h4>
+              <p>3 nurseries live, 284 leads captured this month. CMG 2 is still processing its knowledge base.</p>
             </div>
-            <button class="btn">✦ Draft a new agent</button>
+            <button class="btn">+ New chatbot</button>
           </div>
           <div class="stats">
-            <div class="st"><div class="l">Conversations</div><div class="v">12,310</div><div class="d">▲ +18%</div></div>
-            <div class="st"><div class="l">Active agents</div><div class="v">6</div><div class="d">▲ +1</div></div>
-            <div class="st"><div class="l">Live sites</div><div class="v">5</div><div class="d">▲ +0</div></div>
-            <div class="st"><div class="l">Avg resolution</div><div class="v">71%</div><div class="d">▲ +4 pts</div></div>
+            <div class="st"><div class="l">Active bots</div><div class="v">3</div><div class="d">+1 this month</div></div>
+            <div class="st"><div class="l">Leads captured</div><div class="v">284</div><div class="d">+22%</div></div>
+            <div class="st"><div class="l">Messages · 30d</div><div class="v">4,102</div><div class="d">+18%</div></div>
+            <div class="st"><div class="l">Avg resolution</div><div class="v">76%</div><div class="d">+5 pts</div></div>
           </div>
           <div class="panels">
             <div class="pn">
-              <h5>Conversations · last 30 days</h5>
+              <h5>Messages · last 30 days</h5>
               <div class="chart">
-                <span style="height:40%"></span><span style="height:55%"></span><span style="height:48%"></span>
-                <span style="height:65%"></span><span style="height:58%"></span><span style="height:78%"></span>
-                <span style="height:70%"></span><span style="height:88%"></span><span style="height:74%"></span>
-                <span style="height:95%"></span><span style="height:82%"></span><span style="height:100%"></span>
+                <span style="height:38%"></span><span style="height:52%"></span><span style="height:46%"></span>
+                <span style="height:60%"></span><span style="height:55%"></span><span style="height:74%"></span>
+                <span style="height:68%"></span><span style="height:84%"></span><span style="height:71%"></span>
+                <span style="height:92%"></span><span style="height:80%"></span><span style="height:100%"></span>
               </div>
             </div>
             <div class="pn">
-              <h5>Top intents</h5>
+              <h5>Top parent questions</h5>
               <div class="intent">
-                <div><div class="row2"><span>Pricing</span><span>3,180</span></div><div class="meter"><i style="width:100%"></i></div></div>
-                <div><div class="row2"><span>How-to / docs</span><span>2,610</span></div><div class="meter"><i style="width:82%"></i></div></div>
-                <div><div class="row2"><span>Account / billing</span><span>1,940</span></div><div class="meter"><i style="width:61%"></i></div></div>
-                <div><div class="row2"><span>Bug report</span><span>1,120</span></div><div class="meter"><i style="width:35%"></i></div></div>
+                <div><div class="row2"><span>Fees &amp; funding</span><span>1,480</span></div><div class="meter"><i style="width:100%"></i></div></div>
+                <div><div class="row2"><span>Spaces available</span><span>1,120</span></div><div class="meter"><i style="width:76%"></i></div></div>
+                <div><div class="row2"><span>Ofsted rating</span><span>740</span></div><div class="meter"><i style="width:50%"></i></div></div>
+                <div><div class="row2"><span>SEND provision</span><span>410</span></div><div class="meter"><i style="width:28%"></i></div></div>
               </div>
             </div>
           </div>
@@ -180,146 +237,362 @@
     </div>
   </section>
 
-  <!-- 2 — PROBLEM -->
+  <!-- ③ PROBLEM -->
   <section class="slide">
     <div class="eyebrow">The problem</div>
-    <h2>Chatbots are sprawling — and nobody owns the whole picture.</h2>
+    <h2>Parents enquire at 9pm. Nurseries reply at 9am.</h2>
     <div class="grid g3">
-      <div class="card"><h3>Fragmented</h3><p>Every site ships its own widget, its own prompt, its own model. No shared standard.</p></div>
-      <div class="card"><h3>Blind</h3><p>No single view of volume, resolution or where bots are failing. Issues surface from customers, not dashboards.</p></div>
-      <div class="card"><h3>Slow to ship</h3><p>Spinning up a new agent means engineering time every single time. Ideas die in backlogs.</p></div>
+      <div class="card"><h3>Expensive to build</h3><p>Hiring a dev to build a custom chatbot costs £8K–£40K. No nursery owner can justify that spend.</p></div>
+      <div class="card"><h3>Generic tools don't know them</h3><p>ChatGPT doesn't know their fees or Ofsted rating. Intercom doesn't train on their content at all.</p></div>
+      <div class="card"><h3>Repetitive questions, every day</h3><p>"What are your fees?" "Do you have spaces?" "Are you Outstanding?" — the same handful of questions, over and over.</p></div>
     </div>
-    <p class="lead" style="margin-top:1.8rem">Result: rising support cost, inconsistent brand voice, and AI spend nobody can fully account for.</p>
+    <p class="lead" style="margin-top:1.8rem">Every unanswered enquiry at night is a parent who books a tour with a competitor instead.</p>
   </section>
 
-  <!-- 3 — SOLUTION -->
+  <!-- ④ SOLUTION -->
   <section class="slide">
     <div class="eyebrow">The solution</div>
-    <h2><span class="grad">CCM HQ</span> — the management layer for AI agents.</h2>
-    <p class="lead">Build an agent once. Embed it on any site. Watch every conversation in one dashboard. Govern model, brand and budget centrally.</p>
+    <h2><span class="grad">An AI chatbot</span> we build, sell, and manage.</h2>
+    <p class="lead">Upload the nursery's fee guide, Ofsted report, and policies. Train a bot on it. Embed it on the site we already manage with one script tag. It answers parents 24/7 and captures every lead automatically.</p>
     <ul class="clean">
-      <li><span class="check">✓</span> <b>Build</b> agents from templates — sales concierge, support triage, docs answerer, lead qualifier.</li>
-      <li><span class="check">✓</span> <b>Deploy</b> with one embed snippet; assign which agents respond on which site.</li>
-      <li><span class="check">✓</span> <b>Measure</b> volume, resolution, intents and handoffs per site and per agent.</li>
-      <li><span class="check">✓</span> <b>Govern</b> default model, brand color, time zone and team from one workspace.</li>
+      <li><span class="check">✓</span> <b>Train</b> on real nursery content — never generic AI knowledge.</li>
+      <li><span class="check">✓</span> <b>Embed</b> with one script tag — works on WordPress, Webflow, any CMS.</li>
+      <li><span class="check">✓</span> <b>Capture</b> parent name + email automatically, no form required.</li>
+      <li><span class="check">✓</span> <b>Secure</b> — domain allowlisting ensures the bot only loads on the permitted site.</li>
+      <li><span class="check">✓</span> <b>Manage</b> — all nurseries, bots, and leads from one dashboard.</li>
     </ul>
   </section>
 
-  <!-- 4 — TRACTION / KPIs -->
+  <!-- ⑤ WHY NOW -->
   <section class="slide">
-    <div class="eyebrow">Why it matters — prototype snapshot</div>
-    <h2>Signal from a single mock workspace.</h2>
+    <div class="eyebrow">Why now — for us specifically</div>
+    <h2>We already own the relationship.</h2>
     <div class="grid g4">
-      <div class="card"><div class="kpi">18%<small>Conversations ↑</small></div><div class="delta">vs last 30d</div></div>
-      <div class="card"><div class="kpi">6<small>Active agents</small></div><div class="delta">+1 this month</div></div>
-      <div class="card"><div class="kpi">5<small>Live sites</small></div><div class="delta">one embed each</div></div>
-      <div class="card"><div class="kpi">+4<small>Avg resolution pts</small></div><div class="delta">auto-resolved</div></div>
+      <div class="card"><div class="kpi">100%<small>Clients we already manage</small></div><div class="delta">zero cold outreach</div></div>
+      <div class="card"><div class="kpi">3<small>In-house developers</small></div><div class="delta">no new hires needed</div></div>
+      <div class="card"><div class="kpi">~£20<small>Cost to start testing</small></div><div class="delta">API credits only — infra is free</div></div>
+      <div class="card"><div class="kpi">4 wks<small>To working MVP</small></div><div class="delta">proven stack, no R&amp;D</div></div>
     </div>
-    <p class="lead" style="margin-top:1.8rem">Every point of resolution that an agent handles is a support ticket your team never touches.</p>
+    <p class="lead" style="margin-top:1.8rem">"AI Marketing" is already on our services page. This makes it concrete, demonstrable, and live on the nursery websites we already control.</p>
   </section>
 
-  <!-- 5 — PRODUCT TOUR -->
+  <!-- ⑥ THE PRODUCT — 6 feature cards matching Tuqlas -->
   <section class="slide">
     <div class="eyebrow">The product</div>
     <h2>Six surfaces, one workflow.</h2>
     <div class="grid g3">
-      <div class="card"><span class="tag">Overview</span><h3>At-a-glance HQ</h3><p>Conversation trend, top intents, sites needing attention, recently updated agents.</p></div>
-      <div class="card"><span class="tag">Agents</span><h3>Build &amp; tune</h3><p>Every agent, its model, chat volume and resolution. Spin new ones from templates.</p></div>
-      <div class="card"><span class="tag">Sites</span><h3>Deploy anywhere</h3><p>Embed health per domain, assigned agents, 30-day chats and visitors.</p></div>
-      <div class="card"><span class="tag">Analytics</span><h3>Per-site proof</h3><p>Volume, engagement, handoffs and intent breakdown — exportable.</p></div>
-      <div class="card"><span class="tag">Integrations</span><h3>Make agents useful</h3><p>Slack, Webhooks, Stripe, Postgres, GitHub, Resend.</p></div>
-      <div class="card"><span class="tag">Ideas</span><h3>Ship the roadmap</h3><p>Capture, vote and track ideas from chats and retros to shipped.</p></div>
+      <div class="card"><span class="tag">Chatbots</span><h3>One per nursery</h3><p>Name, branding, welcome message, and model tier — all configured per client from the dashboard.</p></div>
+      <div class="card"><span class="tag">Knowledge</span><h3>Upload &amp; train</h3><p>Fee guides, Ofsted reports, handbooks. PDFs, FAQs, plain text — parsed, chunked, and embedded automatically via RAG.</p></div>
+      <div class="card"><span class="tag">Embed</span><h3>One script tag</h3><p>Shadow DOM widget — paste one line before &lt;/body&gt;. Works on WordPress, Webflow, Shopify, React, Vue, any CMS, zero CSS conflicts.</p></div>
+      <div class="card"><span class="tag">Leads</span><h3>Captured automatically</h3><p>Every parent enquiry saved with name, email, and timestamp — visible instantly in the dashboard, exportable to CSV.</p></div>
+      <div class="card"><span class="tag">Security</span><h3>Domain allowlisting</h3><p>Each embed key is scoped to one domain. The bot silently refuses to load on any site that isn't explicitly permitted — no key leakage risk.</p></div>
+      <div class="card"><span class="tag">Analytics</span><h3>Conversation insights</h3><p>Message volume, resolution rate, top intents — per bot and across all clients. Spot stuck knowledge bases before the nursery notices.</p></div>
     </div>
   </section>
 
-  <!-- 5b — EXAMPLE SITES -->
+  <!-- ⑦ KNOWLEDGE PAGE MOCKUP -->
   <section class="slide">
-    <div class="eyebrow">Example workspace · Acme</div>
-    <h2>Sites under management.</h2>
-    <table>
-      <thead><tr>
-        <th>Site</th><th>Primary agent</th><th class="r">Agents</th>
-        <th class="r">Chats · 30d</th><th class="r">Visitors</th><th class="r">Embed</th>
-      </tr></thead>
-      <tbody>
-        <tr><td class="site"><b>Acme Marketing</b><span>acme.com</span></td><td>Sales Concierge</td><td class="r">3</td><td class="r">8.4k</td><td class="r">112k</td><td class="r"><span class="tag ok">healthy</span></td></tr>
-        <tr><td class="site"><b>Acme Docs</b><span>docs.acme.com</span></td><td>Docs Answerer</td><td class="r">2</td><td class="r">6.1k</td><td class="r">74k</td><td class="r"><span class="tag ok">healthy</span></td></tr>
-        <tr><td class="site"><b>Acme Help Center</b><span>help.acme.com</span></td><td>Support Triage</td><td class="r">2</td><td class="r">5.3k</td><td class="r">48k</td><td class="r"><span class="tag ok">healthy</span></td></tr>
-        <tr><td class="site"><b>Pier Studio</b><span>pierstudio.io</span></td><td>Lead Qualifier</td><td class="r">1</td><td class="r">2.2k</td><td class="r">39k</td><td class="r"><span class="tag warn">warning</span></td></tr>
-        <tr><td class="site"><b>Acme Status</b><span>status.acme.com</span></td><td>Status Bot</td><td class="r">1</td><td class="r">0.9k</td><td class="r">21k</td><td class="r"><span class="tag ok">healthy</span></td></tr>
-      </tbody>
-    </table>
-    <p class="lead" style="margin-top:1.4rem">One dashboard catches <b>Pier Studio's flaky embed</b> before customers ever complain.</p>
+    <div class="eyebrow">Knowledge — training the bot</div>
+    <h2>Upload content. The bot learns it instantly.</h2>
+    <div class="window" style="max-width:980px">
+      <div class="chrome">
+        <i style="background:#ff5f56"></i><i style="background:#ffbd2e"></i><i style="background:#27c93f"></i>
+        <span class="url">app.childcaremarketing.co.uk/knowledge</span>
+      </div>
+      <div class="app" style="grid-template-columns:185px 1fr;min-height:clamp(300px,46vh,460px)">
+        <aside class="side">
+          <div class="brand"><span class="mark" style="width:22px;height:22px;border-radius:7px;background:linear-gradient(135deg,var(--brand),var(--brand2));display:grid;place-items:center;font-size:.7rem">C</span> CM Chatbots</div>
+          <div class="nav"><span class="ic"></span> Overview</div>
+          <div class="nav"><span class="ic"></span> Chatbots</div>
+          <div class="nav on"><span class="ic"></span> Knowledge</div>
+          <div class="nav"><span class="ic"></span> Leads</div>
+          <div class="nav"><span class="ic"></span> Analytics</div>
+          <div class="nav"><span class="ic"></span> Integration</div>
+        </aside>
+        <div class="main">
+          <div class="mh" style="margin-bottom:.6rem">
+            <div>
+              <small>Workspace · Childcare Marketing</small>
+              <h4>Knowledge</h4>
+              <p>Upload files to use as context for your chatbots. Up to 3 files can be attached per chatbot.</p>
+            </div>
+          </div>
+          <div class="kb-two">
+            <!-- LEFT: Add Knowledge -->
+            <div class="pn">
+              <h5 style="margin-bottom:.65rem">Add Knowledge</h5>
+              <div class="kb-tabs">
+                <button class="kb-tab on">File</button>
+                <button class="kb-tab">Text</button>
+                <button class="kb-tab">URL</button>
+              </div>
+              <div class="kb-formats">Supported: <b>.pdf .docx .pptx .txt .md .log</b> &nbsp;·&nbsp; Max <b>5MB</b></div>
+              <div class="kb-drop">
+                <div class="kb-drop-icon">📄</div>
+                <p><b>Click to upload</b> or drag &amp; drop<br>your nursery documents here</p>
+                <button class="kb-upload-btn">Choose file</button>
+              </div>
+            </div>
+            <!-- RIGHT: Your Knowledge Files -->
+            <div class="pn">
+              <div class="kb-files-head">
+                <h5>Your Knowledge Files</h5>
+                <span>3 files</span>
+              </div>
+              <div class="kb-file-row">
+                <div class="kf-icon">📋</div>
+                <div class="kf-name">CM_FeeGuide_2026.pdf</div>
+                <div class="kf-size">1.2 MB</div>
+                <span class="kf-badge tag ok">ready</span>
+              </div>
+              <div class="kb-file-row">
+                <div class="kf-icon">📋</div>
+                <div class="kf-name">Ofsted_Report_Outstanding.pdf</div>
+                <div class="kf-size">840 KB</div>
+                <span class="kf-badge tag ok">ready</span>
+              </div>
+              <div class="kb-file-row">
+                <div class="kf-icon">📄</div>
+                <div class="kf-name">Parent_Handbook_2026.docx</div>
+                <div class="kf-size">2.1 MB</div>
+                <span class="kf-badge tag warn">processing</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="lead" style="margin-top:1rem">PDF, DOCX, PPTX, TXT, MD — all accepted. Uploaded files are chunked and embedded into pgvector automatically. The bot answers from this content only — never from generic AI knowledge.</p>
   </section>
 
-  <!-- 5c — EXAMPLE AGENTS -->
+  <!-- ⑧ EMBED SLIDE — how the client / we paste the script tag -->
   <section class="slide">
-    <div class="eyebrow">Example workspace · Acme</div>
-    <h2>Agents doing the work.</h2>
-    <table>
-      <thead><tr>
-        <th>Agent</th><th>Model</th><th class="r">Status</th>
-        <th class="r">Chats</th><th class="r">Resolution</th>
-      </tr></thead>
-      <tbody>
-        <tr><td><span class="av">SC</span><b>Sales Concierge</b></td><td>google/gemini-3-flash</td><td class="r"><span class="tag ok">active</span></td><td class="r">3,180</td><td class="r">71%</td></tr>
-        <tr><td><span class="av">ST</span><b>Support Triage</b></td><td>google/gemini-3-flash</td><td class="r"><span class="tag ok">active</span></td><td class="r">2,940</td><td class="r">68%</td></tr>
-        <tr><td><span class="av">DA</span><b>Docs Answerer</b></td><td>anthropic/claude-opus-4-8</td><td class="r"><span class="tag ok">active</span></td><td class="r">2,610</td><td class="r">82%</td></tr>
-        <tr><td><span class="av">LQ</span><b>Lead Qualifier</b></td><td>google/gemini-3-flash</td><td class="r"><span class="tag ok">active</span></td><td class="r">1,420</td><td class="r">64%</td></tr>
-        <tr><td><span class="av">SB</span><b>Status Bot</b></td><td>google/gemini-3-flash</td><td class="r"><span class="tag warn">paused</span></td><td class="r">880</td><td class="r">59%</td></tr>
-        <tr><td><span class="av">BA</span><b>Billing Agent</b></td><td>anthropic/claude-opus-4-8</td><td class="r"><span class="tag">draft</span></td><td class="r">—</td><td class="r">—</td></tr>
-      </tbody>
-    </table>
-    <p class="lead" style="margin-top:1.4rem">Mix models per job — fast &amp; cheap for triage, top-tier for docs &amp; billing.</p>
+    <div class="eyebrow">From bot → live on the nursery's site</div>
+    <h2>One click generates the embed. One paste makes it live.</h2>
+    <div class="window">
+      <div class="chrome">
+        <i style="background:#ff5f56"></i><i style="background:#ffbd2e"></i><i style="background:#27c93f"></i>
+        <span class="url">app.childcaremarketing.co.uk/bots/childcare-marketing/embed</span>
+      </div>
+      <div class="app">
+        <aside class="side">
+          <div class="brand"><span class="mark" style="width:22px;height:22px;border-radius:7px;background:linear-gradient(135deg,var(--brand),var(--brand2));display:grid;place-items:center;font-size:.7rem">C</span> CM Chatbots</div>
+          <div class="nav"><span class="ic"></span> Overview</div>
+          <div class="nav on"><span class="ic"></span> Chatbots</div>
+          <div class="subnav on">↳ Embed</div>
+          <div class="nav"><span class="ic"></span> Knowledge</div>
+          <div class="nav"><span class="ic"></span> Leads</div>
+          <div class="nav"><span class="ic"></span> Analytics</div>
+          <div class="nav"><span class="ic"></span> Integration</div>
+        </aside>
+        <div class="main">
+          <div class="mh">
+            <div>
+              <small>Childcare Marketing · childcaremarketing.co.uk</small>
+              <h4>Get embed code</h4>
+              <p>Configure how the bot appears on the site, then copy the snippet and paste it — or send it to the nursery.</p>
+            </div>
+            <span class="tag warn">embed not detected yet</span>
+          </div>
+          <div class="embed-shell">
+            <div class="pn">
+              <h5>Widget config</h5>
+              <div class="field">
+                <label>Nursery</label>
+                <div class="val"><span class="av" style="width:20px;height:20px;font-size:.62rem;margin-right:.4em">CM</span>Childcare Marketing</div>
+              </div>
+              <div class="field">
+                <label>Allowed domain</label>
+                <div class="val" style="font-family:ui-monospace,monospace">childcaremarketing.co.uk</div>
+              </div>
+              <div class="field">
+                <label>Welcome message</label>
+                <div class="val" style="font-size:.72rem">Hi! I'm the Childcare Marketing assistant</div>
+              </div>
+              <div class="field">
+                <label>Accent color</label>
+                <div class="swatches">
+                  <span class="sw on" style="background:#2d9d6f"></span>
+                  <span class="sw" style="background:#3b82f6"></span>
+                  <span class="sw" style="background:#f59e0b"></span>
+                  <span class="sw" style="background:#ef4444"></span>
+                  <span class="sw" style="background:#a855f7"></span>
+                </div>
+              </div>
+              <button class="btn" style="width:100%;margin-top:.4rem;justify-content:center;display:flex" onclick="regenSnippet()">↻ Regenerate key</button>
+            </div>
+            <div class="pn" style="display:flex;flex-direction:column">
+              <h5>Embed snippet — paste before <code style="font-family:ui-monospace,monospace">&lt;/body&gt;</code></h5>
+              <div class="codecard">
+                <div class="ch">
+                  <span id="snippet-key">key: cm_live_cm_a7x9k2m4</span>
+                  <button class="copybtn" id="copybtn" onclick="copySnippet()">
+                    <span id="copy-ic">⧉</span><span id="copy-label">Copy snippet</span>
+                  </button>
+                </div>
+<pre class="code" id="snippet-code"><span class="tk-cmt">&lt;!-- Childcare Marketing chatbot — Childcare Marketing --&gt;</span>
+<span class="tk-tag">&lt;script</span>
+  <span class="tk-attr">src</span>=<span class="tk-str">"https://chat.childcaremarketing.co.uk/bot.js"</span>
+  <span class="tk-attr">data-key</span>=<span class="tk-str">"cm_live_cm_a7x9k2m4"</span>
+  <span class="tk-attr">data-color</span>=<span class="tk-str">"#2d9d6f"</span>
+  <span class="tk-attr">defer</span>
+<span class="tk-tag">&gt;&lt;/script&gt;</span></pre>
+              </div>
+              <div class="install-steps">
+                <div class="istep done"><span class="ic">✓</span> Snippet generated for childcaremarketing.co.uk</div>
+                <div class="istep done"><span class="ic">✓</span> Copied to clipboard</div>
+                <div class="istep" id="step-pasted"><span class="ic">3</span> Paste into site before &lt;/body&gt; (we do this, or send to client)</div>
+                <div class="istep" id="step-live"><span class="ic">4</span> Waiting for first ping from childcaremarketing.co.uk…</div>
+              </div>
+              <div class="livecheck">
+                <span class="pulse"></span>
+                <span style="color:var(--muted)">Listening for embed on <b style="color:var(--ink);font-weight:650">childcaremarketing.co.uk</b> — confirms automatically once live.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="lead" style="margin-top:1.2rem">No dev ticket needed. We paste one line on sites we manage. Nurseries who manage their own CMS can paste it themselves.</p>
   </section>
 
-  <!-- 6 — HOW IT WORKS -->
+  <!-- ⑧ HOW THE CLIENT / WE INSTALL THE SCRIPT TAG -->
+  <section class="slide">
+    <div class="eyebrow">Script tag installation — three scenarios</div>
+    <h2>Works everywhere. Paste once, live forever.</h2>
+    <p class="lead">The same snippet works across every platform. The bot loads only on the permitted domain.</p>
+    <div class="install-grid">
+      <div class="install-card">
+        <div class="ic-head">
+          <span>Any HTML site</span>
+          <span class="tag ok">simplest</span>
+        </div>
+        <pre class="code"><span class="tk-cmt">&lt;!-- Paste before &lt;/body&gt; --&gt;</span>
+<span class="tk-tag">&lt;script</span>
+  <span class="tk-attr">src</span>=<span class="tk-str">"https://chat.childcaremarketing
+.co.uk/bot.js"</span>
+  <span class="tk-attr">data-key</span>=<span class="tk-str">"YOUR_EMBED_KEY"</span>
+  <span class="tk-attr">data-color</span>=<span class="tk-str">"#2d9d6f"</span>
+  <span class="tk-attr">defer</span>
+<span class="tk-tag">&gt;&lt;/script&gt;</span></pre>
+      </div>
+      <div class="install-card">
+        <div class="ic-head">
+          <span>WordPress</span>
+          <span class="tag">via WPCode plugin</span>
+        </div>
+        <pre class="code"><span class="tk-cmt">// WPCode → Add Snippet
+// → Insert in Footer</span>
+
+<span class="tk-cmt">// Paste the snippet as-is.
+// No theme file edits needed.
+// Works with Elementor, Divi,
+// Beaver Builder, etc.</span>
+
+<span class="tk-cmt">// Or use any "Header &amp; Footer
+// Scripts" plugin.</span></pre>
+      </div>
+      <div class="install-card">
+        <div class="ic-head">
+          <span>Webflow / Shopify</span>
+          <span class="tag">site-wide</span>
+        </div>
+        <pre class="code"><span class="tk-cmt">// Webflow:
+// Project Settings → Custom Code
+// → Footer Code → paste snippet
+
+// Shopify:
+// Online Store → Themes → Edit code
+// → theme.liquid before &lt;/body&gt;
+// → paste snippet
+
+// Both update instantly — no
+// redeploy or cache clear needed.</span></pre>
+      </div>
+    </div>
+    <p class="lead" style="margin-top:1.4rem">The <b style="color:var(--ink)">data-key</b> ties the widget to one specific bot and one permitted domain. A stolen key on a different site returns nothing.</p>
+  </section>
+
+  <!-- ⑨ NURSERIES TABLE -->
+  <section class="slide">
+    <div class="eyebrow">Example rollout</div>
+    <h2>Nurseries under management.</h2>
+    <table>
+      <thead><tr>
+        <th>Nursery</th><th>Status</th><th class="r">Leads · 30d</th>
+        <th class="r">Messages · 30d</th><th class="r">Resolution</th><th class="r">Embed</th>
+      </tr></thead>
+      <tbody>
+        <tr><td class="site"><b>Childcare Marketing</b><span>childcaremarketing.co.uk</span></td><td>Active</td><td class="r">112</td><td class="r">1,840</td><td class="r">78%</td><td class="r"><span class="tag ok">healthy</span></td></tr>
+        <tr><td class="site"><b>CMG 1</b><span>cmg1.co.uk</span></td><td>Active</td><td class="r">96</td><td class="r">1,520</td><td class="r">74%</td><td class="r"><span class="tag ok">healthy</span></td></tr>
+        <tr><td class="site"><b>CMG 2</b><span>cmg2.co.uk</span></td><td>Active</td><td class="r">41</td><td class="r">620</td><td class="r">69%</td><td class="r"><span class="tag warn">processing</span></td></tr>
+        <tr><td class="site"><b>CMG 3</b><span>cmg3.co.uk</span></td><td>Active</td><td class="r">35</td><td class="r">580</td><td class="r">81%</td><td class="r"><span class="tag ok">healthy</span></td></tr>
+      </tbody>
+    </table>
+    <p class="lead" style="margin-top:1.4rem">One dashboard catches <b>CMG 2's stuck processing job</b> before the client ever has to ask why their bot isn't live.</p>
+  </section>
+
+  <!-- ⑩ HOW IT WORKS -->
   <section class="slide">
     <div class="eyebrow">How it works</div>
-    <h2>From zero to live agent in four steps.</h2>
+    <h2>From zero to live nursery bot in four steps.</h2>
     <div class="grid" style="margin-top:1.4rem">
-      <div class="step"><div class="num">1</div><div><h3 style="margin:.1em 0">Pick a template</h3><p style="margin:0;color:var(--muted)">Start from a preconfigured agent — prompt, tools and model already wired.</p></div></div>
-      <div class="step"><div class="num">2</div><div><h3 style="margin:.1em 0">Connect tools</h3><p style="margin:0;color:var(--muted)">Give it Slack handoff, a webhook stream, or read-only DB lookups.</p></div></div>
-      <div class="step"><div class="num">3</div><div><h3 style="margin:.1em 0">Drop the embed</h3><p style="margin:0;color:var(--muted)">Paste one snippet on any site, assign the agent, go live.</p></div></div>
-      <div class="step"><div class="num">4</div><div><h3 style="margin:.1em 0">Measure &amp; iterate</h3><p style="margin:0;color:var(--muted)">Watch resolution and intents; feed gaps back into the idea board.</p></div></div>
+      <div class="step"><div class="num">1</div><div><h3 style="margin:.1em 0">Upload their content</h3><p style="margin:0;color:var(--muted)">Fee guide, Ofsted report, parent handbook — PDF, DOCX, or TXT. The dashboard handles parsing automatically.</p></div></div>
+      <div class="step"><div class="num">2</div><div><h3 style="margin:.1em 0">Bot trains automatically</h3><p style="margin:0;color:var(--muted)">Content is parsed, chunked, and embedded into pgvector — ready in under a minute. No manual configuration.</p></div></div>
+      <div class="step"><div class="num">3</div><div><h3 style="margin:.1em 0">Drop the embed</h3><p style="margin:0;color:var(--muted)">Copy the generated &lt;script&gt; tag from the dashboard, paste it on the nursery site. Bot goes live immediately.</p></div></div>
+      <div class="step"><div class="num">4</div><div><h3 style="margin:.1em 0">Leads flow in</h3><p style="margin:0;color:var(--muted)">Every parent enquiry is captured automatically — name, email, timestamp — visible in the dashboard.</p></div></div>
     </div>
   </section>
 
-  <!-- 7 — GOVERNANCE / DIFFERENTIATION -->
+  <!-- ⑪ HOW IT'S BUILT -->
   <section class="slide">
-    <div class="eyebrow">Why us, not a widget</div>
-    <h2>Central governance is the moat.</h2>
+    <div class="eyebrow">How it's built</div>
+    <h2>Proven stack. We already know it.</h2>
     <div class="grid g2">
-      <div class="card"><h3>One model policy</h3><p>Set a default model workspace-wide (e.g. <code>gemini-3-flash</code>). Control cost and quality in one place, not 12.</p></div>
-      <div class="card"><h3>Consistent brand</h3><p>Brand color, widget header and email handoffs centrally enforced across every site.</p></div>
-      <div class="card"><h3>Embed health</h3><p>See <span class="tag ok">healthy</span> / <span class="tag warn">warning</span> per domain before customers do.</p></div>
-      <div class="card"><h3>Built-in feedback loop</h3><p>Ideas board turns customer chat gaps directly into a ranked, shippable roadmap.</p></div>
+      <div class="card"><h3>Next.js + Supabase</h3><p>Dashboard, auth, Postgres, pgvector, and file storage — all in one service. No Pinecone, no separate S3, no extra infrastructure to manage.</p></div>
+      <div class="card"><h3>OpenAI + Claude</h3><p>GPT-4o mini for lighter bots, Claude Haiku for mid-tier, Claude Sonnet for the highest accuracy — swappable via Vercel AI SDK with no code changes.</p></div>
+      <div class="card"><h3>Shadow DOM widget</h3><p>One Vite-built script tag. The bot runs in an isolated Shadow DOM — zero CSS conflicts on any WordPress, Webflow, or Shopify site we manage.</p></div>
+      <div class="card"><h3>Security by default</h3><p>Each bot gets a scoped embed key locked to one domain. Server-side LLM key management — no API keys ever exposed to the browser or the nursery.</p></div>
     </div>
   </section>
 
-  <!-- 8 — THE ASK -->
+  <!-- ⑫ BUILD ROADMAP -->
+  <section class="slide">
+    <div class="eyebrow">Build roadmap</div>
+    <h2>July → August 2026.</h2>
+    <ul class="clean">
+      <li><b>Wk 1–2</b> Foundation — Supabase schema + pgvector + RLS, auth, Next.js scaffold.</li>
+      <li><b>Wk 2–3</b> Core AI — RAG ingestion pipeline, chat API with streaming, all guardrails, domain allowlisting.</li>
+      <li><b>Wk 3–4</b> Widget + dashboard — embed script, knowledge upload UI, lead capture, analytics.</li>
+      <li><b>August Wk 1</b> Pilot — deploy free on 2–3 existing clients, gather feedback on accuracy and lead flow.</li>
+      <li><b>August Wk 2+</b> Rollout — offer to full client base as a managed add-on service.</li>
+    </ul>
+  </section>
+
+  <!-- ⑬ THE ASK -->
   <section class="slide">
     <div class="eyebrow">The ask</div>
-    <h2>Greenlight a focused pilot.</h2>
-    <p class="lead">Working prototype already exists. Next step is a real pilot on a handful of our own properties to validate resolution lift and cost savings.</p>
+    <h2>Greenlight 4 weeks of build time.</h2>
+    <p class="lead">Both of us are already developers. No new hires, no agency, no big budget — just focused time and a small amount of API credit.</p>
     <ul class="clean">
-      <li><b>1.</b> Approve a 1-team pilot across 3–5 internal sites.</li>
-      <li><b>2.</b> Pick a cost baseline so we can prove support-ticket deflection.</li>
-      <li><b>3.</b> 30-day readout: resolution %, handoff rate, cost per resolved chat.</li>
+      <li><b>1.</b> 4 weeks of build time alongside normal client work.</li>
+      <li><b>2.</b> ~£20 in OpenAI / Anthropic API credits for testing — Supabase and Vercel are both free tier.</li>
+      <li><b>3.</b> 3 pilot nursery clients in June — free, for feedback and testimonials.</li>
+      <li><b>4.</b> Green light to offer it as a managed add-on from July onward.</li>
     </ul>
-    <div class="quote grad" style="margin-top:2.2rem">"Run every chatbot like one product, not twelve side projects."</div>
+    <div class="quote grad" style="margin-top:2.2rem">"Every nursery we manage deserves a front door that never sleeps."</div>
   </section>
 
-  <!-- 9 — CLOSE -->
+  <!-- ⑭ CLOSING -->
   <section class="slide" style="align-items:flex-start">
-    <div class="logo" style="font-size:1.1rem;margin-bottom:2rem"><span class="mark">C</span> CCM HQ</div>
-    <h1>Let's give every site<br><span class="grad">a smarter front door.</span></h1>
-    <p class="lead">Thank you. Demo &amp; Q&amp;A.</p>
+    <div class="logo" style="font-size:1.1rem;margin-bottom:2rem"><span class="mark">C</span> Childcare Marketing</div>
+    <h1>Let's give every nursery<br><span class="grad">a smarter front door.</span></h1>
+    <p class="lead">Thank you. Questions?</p>
   </section>
 
   <div class="foot">
-    <div class="logo"><span class="mark">C</span> CCM HQ</div>
-    <div><span id="pageno">1</span> / <span id="pagetotal">9</span></div>
+    <div class="logo"><span class="mark">C</span> Childcare Marketing</div>
+    <div><span id="pageno">1</span> / <span id="pagetotal"></span></div>
   </div>
 </div>
 <div class="hint">← → or Space to navigate · F fullscreen</div>
@@ -344,8 +617,55 @@
     else if(e.key==='End')show(slides.length-1);
     else if(e.key.toLowerCase()==='f'){document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen()}
   });
-  addEventListener('click',e=>{ if(e.target.closest('a'))return; e.clientX>innerWidth*0.35?next():prev(); });
+  addEventListener('click',e=>{
+    if(e.target.closest('a'))return;
+    if(e.target.closest('.copybtn')||e.target.closest('.btn')||e.target.closest('.sw'))return;
+    e.clientX>innerWidth*0.35?next():prev();
+  });
   show(0);
+
+  function randKey(){
+    const chars='abcdefghijklmnopqrstuvwxyz0123456789';
+    let out='';
+    for(let i=0;i<8;i++) out+=chars[Math.floor(Math.random()*chars.length)];
+    return out;
+  }
+  function regenSnippet(){
+    const k='cm_live_cm_'+randKey();
+    document.getElementById('snippet-key').textContent='key: '+k;
+    const code=document.getElementById('snippet-code');
+    code.innerHTML=code.innerHTML.replace(/cm_live_cm_[a-z0-9]+/,k);
+    document.getElementById('step-pasted').classList.remove('done');
+    document.getElementById('step-pasted').querySelector('.ic').textContent='3';
+    document.getElementById('step-live').classList.remove('done');
+    document.getElementById('step-live').innerHTML='<span class="ic">4</span> Waiting for first ping from childcaremarketing.co.uk\u2026';
+    const copybtn=document.getElementById('copybtn');
+    copybtn.classList.remove('copied');
+    document.getElementById('copy-ic').textContent='\u29C9';
+    document.getElementById('copy-label').textContent='Copy snippet';
+  }
+  function copySnippet(){
+    const text=document.getElementById('snippet-code').innerText;
+    if(navigator.clipboard){navigator.clipboard.writeText(text).catch(()=>{})}
+    const copybtn=document.getElementById('copybtn');
+    copybtn.classList.add('copied');
+    document.getElementById('copy-ic').textContent='\u2713';
+    document.getElementById('copy-label').textContent='Copied';
+    setTimeout(()=>{
+      const s3=document.getElementById('step-pasted');
+      s3.classList.add('done');s3.querySelector('.ic').textContent='\u2713';
+    },900);
+    setTimeout(()=>{
+      const s4=document.getElementById('step-live');
+      s4.classList.add('done');
+      s4.innerHTML='<span class="ic">\u2713</span> Live \u2014 first ping received from childcaremarketing.co.uk';
+    },2200);
+    setTimeout(()=>{
+      copybtn.classList.remove('copied');
+      document.getElementById('copy-ic').textContent='\u29C9';
+      document.getElementById('copy-label').textContent='Copy snippet';
+    },2600);
+  }
 </script>
 </body>
 </html>
