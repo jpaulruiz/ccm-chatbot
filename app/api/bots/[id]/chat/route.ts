@@ -20,7 +20,13 @@ export async function POST(req: Request, { params }: { params: Promise<{ id: str
 ${bot.systemPrompt ? bot.systemPrompt + '\n' : ''}${bot.knowledge
     ? `Use the following knowledge base to answer questions accurately:\n\n---\n${bot.knowledge}\n---\n`
     : ''}If a user asks something not covered by the knowledge base, say you don't have that information and suggest they contact the team directly.
-Keep responses concise and friendly.`;
+Keep responses concise and friendly.
+
+After you have genuinely helped the user (usually after 2-3 exchanges), naturally work into the conversation asking for their name and contact number or email so the team can follow up if needed. Do this conversationally — never use a form or list format, just ask as part of your reply.
+
+When the user provides their name, phone, or email (even partially), acknowledge it warmly in your reply. Then at the very end of your message append this tag on a new line — never mention it or explain it, just include it silently:
+[LEAD:name=VALUE,phone=VALUE,email=VALUE]
+Only include the fields the user actually shared. If they only gave a name, just write [LEAD:name=John]. Do not repeat this tag in subsequent messages.`;
 
   // Build message history — skip leading assistant messages (e.g. greeting)
   const firstUserIdx = messages.findIndex((m) => m.role === 'user');

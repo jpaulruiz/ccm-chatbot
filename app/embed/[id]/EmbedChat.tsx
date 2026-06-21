@@ -8,8 +8,6 @@ export default function EmbedChat({ bot }: { bot: Bot }) {
   ]);
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
-  const [leadForm, setLeadForm] = useState(false);
-  const [lead, setLead] = useState({ name: '', email: '', phone: '' });
   const [leadSent, setLeadSent] = useState(false);
   const bottomRef = useRef<HTMLDivElement>(null);
 
@@ -33,7 +31,27 @@ export default function EmbedChat({ bot }: { bot: Bot }) {
         body: JSON.stringify({ messages: next }),
       });
       const data = await res.json();
-      const reply = data.reply || `Error: ${data.error}`;
+      const raw: string = data.reply || `Error: ${data.error}`;
+
+      // Silently extract [LEAD:name=X,phone=X,email=X] tag if present
+      const leadMatch = raw.match(/\[LEAD:([^\]]+)\]/);
+      const reply = raw.replace(/\n?\[LEAD:[^\]]+\]/, '').trim();
+
+      if (leadMatch && !leadSent) {
+        const parts = Object.fromEntries(
+          leadMatch[1].split(',').map((p) => {
+            const [k, ...v] = p.split('=');
+            return [k.trim(), v.join('=').trim()];
+          })
+        );
+        fetch('/api/leads', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ ...parts, botId: bot.id }),
+        });
+        setLeadSent(true);
+      }
+
       setMessages((m) => [...m, { role: 'assistant', content: reply }]);
     } catch (err) {
       const msg = err instanceof Error ? err.message : 'Network error';
@@ -41,21 +59,6 @@ export default function EmbedChat({ bot }: { bot: Bot }) {
     } finally {
       setLoading(false);
     }
-  }
-
-  async function submitLead(e: React.FormEvent) {
-    e.preventDefault();
-    await fetch('/api/leads', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ ...lead, botId: bot.id }),
-    });
-    setLeadSent(true);
-    setLeadForm(false);
-    setMessages((m) => [
-      ...m,
-      { role: 'assistant', content: `Thanks ${lead.name || 'there'}! We have your details and will be in touch soon. 😊` },
-    ]);
   }
 
   const grad = `linear-gradient(135deg, ${bot.primaryColor}, #3b82f6)`;
@@ -113,52 +116,8 @@ export default function EmbedChat({ bot }: { bot: Bot }) {
         <div ref={bottomRef} />
       </div>
 
-      {/* Lead capture form */}
-      {leadForm && !leadSent && (
-        <div className="px-4 py-3 border-t border-[#1f2940] bg-[#0e1626]">
-          <p className="text-xs text-[#9aa7bd] mb-2">Leave your details and we'll be in touch:</p>
-          <form onSubmit={submitLead} className="space-y-2">
-            <input
-              value={lead.name}
-              onChange={(e) => setLead((l) => ({ ...l, name: e.target.value }))}
-              placeholder="Your name"
-              className="w-full bg-[#0a0f1b] border border-[#1f2940] rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-[#2d9d6f]"
-            />
-            <input
-              type="email"
-              value={lead.email}
-              onChange={(e) => setLead((l) => ({ ...l, email: e.target.value }))}
-              placeholder="Email address"
-              className="w-full bg-[#0a0f1b] border border-[#1f2940] rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-[#2d9d6f]"
-            />
-            <input
-              value={lead.phone}
-              onChange={(e) => setLead((l) => ({ ...l, phone: e.target.value }))}
-              placeholder="Phone (optional)"
-              className="w-full bg-[#0a0f1b] border border-[#1f2940] rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-[#2d9d6f]"
-            />
-            <div className="flex gap-2">
-              <button type="submit" className="flex-1 text-white text-sm font-semibold py-2 rounded-lg" style={{ background: grad }}>
-                Submit
-              </button>
-              <button type="button" onClick={() => setLeadForm(false)} className="text-xs text-[#9aa7bd] px-3">
-                Cancel
-              </button>
-            </div>
-          </form>
-        </div>
-      )}
-
       {/* Input bar */}
       <div className="px-4 py-3 border-t border-[#1f2940] bg-[#0c1220]">
-        {!leadSent && (
-          <button
-            onClick={() => setLeadForm((f) => !f)}
-            className="text-xs text-[#9aa7bd] mb-2 hover:text-white transition"
-          >
-            📋 Leave your contact details
-          </button>
-        )}
         <form onSubmit={send} className="flex gap-2">
           <input
             value={input}
