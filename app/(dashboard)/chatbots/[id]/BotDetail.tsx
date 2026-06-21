@@ -7,6 +7,35 @@ const COLORS = ['#2d9d6f', '#3b82f6', '#8b5cf6', '#f59e0b', '#ef4444', '#ec4899'
 const TABS = ['Setup', 'Knowledge', 'Embed'] as const;
 type Tab = typeof TABS[number];
 
+type Framework = 'HTML' | 'Next.js' | 'React' | 'Vue' | 'Svelte' | 'Astro' | 'WordPress' | 'Shopify' | 'PHP' | 'Laravel';
+
+function getSnippet(framework: Framework, src: string): string {
+  switch (framework) {
+    case 'HTML':
+      return `<!-- Paste before </body> -->\n<script src="${src}" defer></script>`;
+    case 'Next.js':
+      return `// app/layout.tsx\nimport Script from 'next/script';\n\nexport default function RootLayout({ children }) {\n  return (\n    <html>\n      <body>\n        {children}\n        <Script src="${src}" strategy="lazyOnload" />\n      </body>\n    </html>\n  );\n}`;
+    case 'React':
+      return `// Add to your root component (e.g. App.tsx)\nimport { useEffect } from 'react';\n\nuseEffect(() => {\n  const s = document.createElement('script');\n  s.src = '${src}';\n  s.defer = true;\n  document.body.appendChild(s);\n}, []);`;
+    case 'Vue':
+      return `// main.ts or App.vue <script setup>\nimport { onMounted } from 'vue';\n\nonMounted(() => {\n  const s = document.createElement('script');\n  s.src = '${src}';\n  s.defer = true;\n  document.body.appendChild(s);\n});`;
+    case 'Svelte':
+      return `<!-- +layout.svelte -->\n<svelte:head>\n  <script src="${src}" defer><\/script>\n</svelte:head>`;
+    case 'Astro':
+      return `---\n// src/layouts/Layout.astro\n---\n<html>\n  <body>\n    <slot />\n    <script src="${src}" defer></script>\n  </body>\n</html>`;
+    case 'WordPress':
+      return `// functions.php\nfunction ccm_chatbot_script() {\n  wp_enqueue_script(\n    'ccm-chatbot',\n    '${src}',\n    [],\n    null,\n    true // load in footer\n  );\n}\nadd_action( 'wp_enqueue_scripts', 'ccm_chatbot_script' );`;
+    case 'Shopify':
+      return `{%- comment -%}\n  Add to theme.liquid just before </body>\n{%- endcomment -%}\n<script src="${src}" defer></script>`;
+    case 'PHP':
+      return `<?php\n// Add before closing </body> tag\n?>\n<script src="<?php echo '${src}'; ?>" defer></script>`;
+    case 'Laravel':
+      return `{{-- Add to your Blade layout (e.g. app.blade.php) before </body> --}}\n<script src="{{ '${src}' }}" defer></script>`;
+  }
+}
+
+const FRAMEWORKS: Framework[] = ['HTML', 'Next.js', 'React', 'Vue', 'Svelte', 'Astro', 'WordPress', 'Shopify', 'PHP', 'Laravel'];
+
 export default function BotDetail({ bot: initial }: { bot: Bot }) {
   const router = useRouter();
   const [tab, setTab] = useState<Tab>('Setup');
@@ -15,6 +44,7 @@ export default function BotDetail({ bot: initial }: { bot: Bot }) {
   const [saved, setSaved] = useState(false);
   const [copied, setCopied] = useState(false);
   const [deleting, setDeleting] = useState(false);
+  const [framework, setFramework] = useState<Framework>('HTML');
   const fileRef = useRef<HTMLInputElement>(null);
 
   function set(k: keyof Bot, v: string) {
@@ -51,10 +81,11 @@ export default function BotDetail({ bot: initial }: { bot: Bot }) {
   }
 
   const origin = typeof window !== 'undefined' ? window.location.origin : 'http://localhost:3000';
-  const embedScript = `<script src="${origin}/api/widget?botId=${bot.id}" defer></script>`;
+  const widgetSrc = `${origin}/api/widget?botId=${bot.id}`;
+  const embedSnippet = getSnippet(framework, widgetSrc);
 
   function copyEmbed() {
-    navigator.clipboard.writeText(embedScript);
+    navigator.clipboard.writeText(embedSnippet);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   }
@@ -233,16 +264,33 @@ export default function BotDetail({ bot: initial }: { bot: Bot }) {
 
       {/* --- EMBED TAB --- */}
       {tab === 'Embed' && (
-        <div className="space-y-6">
+        <div className="space-y-5">
           <div>
             <p className="text-sm font-semibold mb-1">Your embed script</p>
-            <p className="text-xs text-[#9aa7bd]">Copy this one-line script and paste it before the <code className="text-[#2d9d6f]">&lt;/body&gt;</code> tag of any website. The chat widget will appear instantly.</p>
+            <p className="text-xs text-[#9aa7bd]">Select your platform, copy the snippet, and paste it into your site. The chat widget appears instantly.</p>
+          </div>
+
+          {/* Framework selector */}
+          <div className="flex flex-wrap gap-1.5">
+            {FRAMEWORKS.map((f) => (
+              <button
+                key={f}
+                onClick={() => { setFramework(f); setCopied(false); }}
+                className={`px-3 py-1.5 rounded-lg text-xs font-semibold border transition ${
+                  framework === f
+                    ? 'bg-gradient-to-r from-[#2d9d6f] to-[#3b82f6] text-white border-transparent'
+                    : 'bg-[#0a0f1b] border-[#1f2940] text-[#9aa7bd] hover:text-white hover:border-[#2d9d6f55]'
+                }`}
+              >
+                {f}
+              </button>
+            ))}
           </div>
 
           {/* Code card */}
           <div className="bg-[#0a0f1b] border border-[#1f2940] rounded-xl overflow-hidden">
             <div className="flex items-center justify-between px-4 py-2.5 border-b border-[#1f2940] bg-[#0c1220]">
-              <span className="text-xs text-[#9aa7bd] font-mono">HTML · embed snippet</span>
+              <span className="text-xs text-[#9aa7bd] font-mono">{framework} · embed snippet</span>
               <button
                 onClick={copyEmbed}
                 className={`flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-lg border transition font-medium ${
@@ -254,27 +302,9 @@ export default function BotDetail({ bot: initial }: { bot: Bot }) {
                 {copied ? '✓ Copied' : '⎘ Copy'}
               </button>
             </div>
-            <pre className="px-5 py-4 text-sm font-mono text-[#9ece6a] overflow-x-auto whitespace-pre-wrap break-all">
-              {embedScript}
+            <pre className="px-5 py-4 text-sm font-mono text-[#9ece6a] overflow-x-auto whitespace-pre leading-relaxed">
+              {embedSnippet}
             </pre>
-          </div>
-
-          {/* Install steps */}
-          <div className="bg-[#0e1626] border border-[#1f2940] rounded-xl p-5 space-y-3">
-            <p className="text-xs font-bold uppercase tracking-widest text-[#9aa7bd]">How to install</p>
-            {[
-              'Copy the script tag above',
-              'Open your website\'s HTML (or CMS theme editor)',
-              'Paste it just before </body>',
-              'Save and reload — your chat widget is live!',
-            ].map((step, i) => (
-              <div key={i} className="flex items-start gap-3 text-sm">
-                <span className="w-6 h-6 rounded-full bg-gradient-to-br from-[#2d9d6f] to-[#3b82f6] grid place-items-center text-xs font-bold flex-shrink-0">
-                  {i + 1}
-                </span>
-                <p className="text-[#9aa7bd] pt-0.5">{step}</p>
-              </div>
-            ))}
           </div>
 
           {/* Preview link */}
