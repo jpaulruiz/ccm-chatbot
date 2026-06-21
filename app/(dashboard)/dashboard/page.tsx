@@ -1,92 +1,189 @@
-import { getBots, getLeads } from '@/lib/db';
 import Link from 'next/link';
+import { getBots, getLeads } from '@/lib/db';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+import { Progress } from '@/components/ui/progress';
+import { PageHeader } from '@/components/page-header';
+import { AreaTrend } from '@/components/charts/area-trend';
+import { conversationsTrend, topIntents } from '@/lib/mock-data';
+import { initials, relativeTime, slugDomain } from '@/lib/format';
+import { Activity, ArrowUpRight, Bot, Globe, MessageSquare, Sparkles, Users } from 'lucide-react';
 
 export const dynamic = 'force-dynamic';
+
+function Stat({
+  label,
+  value,
+  delta,
+  icon: Icon,
+}: {
+  label: string;
+  value: string;
+  delta: string;
+  icon: React.ElementType;
+}) {
+  return (
+    <Card>
+      <CardContent className="p-5">
+        <div className="flex items-start justify-between">
+          <div>
+            <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground">{label}</p>
+            <p className="mt-2 font-display text-3xl font-semibold tracking-tight">{value}</p>
+          </div>
+          <div className="grid size-9 place-items-center rounded-md bg-accent text-accent-foreground">
+            <Icon className="size-4" />
+          </div>
+        </div>
+        <div className="mt-3 flex items-center gap-1 text-xs">
+          <ArrowUpRight className="size-3.5 text-success" />
+          <span className="text-success">{delta}</span>
+          <span className="text-muted-foreground">vs last 30d</span>
+        </div>
+      </CardContent>
+    </Card>
+  );
+}
 
 export default function DashboardPage() {
   const bots = getBots();
   const leads = getLeads();
-  const totalMessages = bots.reduce((s, b) => s + (b.messageCount || 0), 0);
-  const totalLeads = leads.length;
+  const totalConversations = bots.reduce((s, b) => s + (b.messageCount || 0), 0);
+  const recent = [...bots].sort((a, b) => +new Date(b.createdAt) - +new Date(a.createdAt));
 
   return (
-    <div>
-      <div className="flex items-start justify-between mb-6">
-        <div>
-          <p className="text-xs uppercase tracking-widest text-[#3b82f6] font-bold mb-1">Workspace · Childcare Marketing</p>
-          <h1 className="text-2xl font-bold">Good morning</h1>
-          <p className="text-[#9aa7bd] text-sm mt-1">
-            {bots.length} chatbot{bots.length !== 1 ? 's' : ''} active, {totalLeads} leads captured total.
-          </p>
-        </div>
-        <Link
-          href="/chatbots/new"
-          className="bg-gradient-to-r from-[#2d9d6f] to-[#3b82f6] text-white text-sm font-semibold px-4 py-2 rounded-lg hover:opacity-90 transition"
-        >
-          + New chatbot
-        </Link>
+    <div className="mx-auto flex max-w-7xl flex-col gap-8">
+      <PageHeader
+        eyebrow="Workspace · Childcare Marketing"
+        title="Good morning"
+        description={`${bots.length} agent${bots.length !== 1 ? 's' : ''} answering across your sites, ${leads.length} lead${leads.length !== 1 ? 's' : ''} captured.`}
+        actions={
+          <>
+            <Button asChild variant="outline" size="sm">
+              <Link href="/analytics">View analytics</Link>
+            </Button>
+            <Button asChild size="sm" className="gap-1.5">
+              <Link href="/chatbots/new">
+                <Sparkles className="size-4" /> Draft a new agent
+              </Link>
+            </Button>
+          </>
+        }
+      />
+
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <Stat label="Conversations" value={totalConversations.toLocaleString()} delta="+18%" icon={MessageSquare} />
+        <Stat label="Active agents" value={`${bots.length}`} delta="+1" icon={Bot} />
+        <Stat label="Leads captured" value={`${leads.length}`} delta="+4" icon={Users} />
+        <Stat label="Live sites" value={`${bots.length}`} delta="+0" icon={Activity} />
       </div>
 
-      {/* Stats */}
-      <div className="grid grid-cols-3 gap-4 mb-8">
-        {[
-          { label: 'Active bots', value: bots.length },
-          { label: 'Leads captured', value: totalLeads },
-          { label: 'Messages sent', value: totalMessages },
-        ].map((s) => (
-          <div key={s.label} className="bg-[#0e1626] border border-[#1f2940] rounded-xl p-5">
-            <p className="text-[10px] uppercase tracking-widest text-[#9aa7bd] font-bold">{s.label}</p>
-            <p className="text-3xl font-extrabold mt-2">{s.value}</p>
-          </div>
-        ))}
+      <div className="grid gap-6 lg:grid-cols-3">
+        <Card className="lg:col-span-2">
+          <CardHeader className="flex flex-row items-center justify-between">
+            <div>
+              <CardTitle className="font-display">Conversations · last 30 days</CardTitle>
+              <p className="mt-1 text-sm text-muted-foreground">
+                Total volume vs auto-resolved by your agents (illustrative).
+              </p>
+            </div>
+            <Badge variant="secondary" className="rounded-full">Live</Badge>
+          </CardHeader>
+          <CardContent>
+            <AreaTrend data={conversationsTrend} height={288} idPrefix="overview" />
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader>
+            <CardTitle className="font-display">Top intents</CardTitle>
+            <p className="mt-1 text-sm text-muted-foreground">What people are asking this month.</p>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            {topIntents.map((t) => (
+              <div key={t.intent} className="space-y-1.5">
+                <div className="flex items-center justify-between text-sm">
+                  <span className="font-medium text-foreground">{t.intent}</span>
+                  <span className="tabular-nums text-muted-foreground">{t.count.toLocaleString()}</span>
+                </div>
+                <Progress value={(t.count / topIntents[0].count) * 100} className="h-1.5" />
+              </div>
+            ))}
+          </CardContent>
+        </Card>
       </div>
 
-      {/* Bot list */}
-      <h2 className="text-sm font-bold uppercase tracking-widest text-[#9aa7bd] mb-3">Your chatbots</h2>
-      {bots.length === 0 ? (
-        <div className="border border-dashed border-[#1f2940] rounded-xl p-12 text-center text-[#9aa7bd]">
-          <p className="text-4xl mb-3">◈</p>
-          <p className="font-semibold">No chatbots yet</p>
-          <p className="text-sm mt-1">Create your first chatbot to get started.</p>
-          <Link href="/chatbots/new" className="inline-block mt-4 bg-gradient-to-r from-[#2d9d6f] to-[#3b82f6] text-white text-sm font-semibold px-5 py-2 rounded-lg">
-            Create chatbot
-          </Link>
-        </div>
-      ) : (
-        <div className="grid grid-cols-1 gap-3">
-          {bots.map((bot) => (
-            <Link
-              key={bot.id}
-              href={`/chatbots/${bot.id}`}
-              className="flex items-center justify-between bg-[#0e1626] border border-[#1f2940] rounded-xl px-5 py-4 hover:border-[#2d9d6f44] transition"
-            >
-              <div className="flex items-center gap-3">
-                <span
-                  className="w-9 h-9 rounded-full grid place-items-center text-white text-sm font-bold"
-                  style={{ background: `linear-gradient(135deg, ${bot.primaryColor}, #3b82f6)` }}
-                >
-                  {bot.name[0]}
-                </span>
-                <div>
-                  <p className="font-semibold text-sm">{bot.name}</p>
-                  <p className="text-xs text-[#9aa7bd]">Created {new Date(bot.createdAt).toLocaleDateString()}</p>
+      <div className="grid gap-6 lg:grid-cols-2">
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between">
+            <CardTitle className="font-display">Connected sites</CardTitle>
+            <Button asChild variant="ghost" size="sm">
+              <Link href="/sites">View all</Link>
+            </Button>
+          </CardHeader>
+          <CardContent className="divide-y divide-border">
+            {recent.slice(0, 4).map((b) => (
+              <div key={b.id} className="flex items-center justify-between py-3 first:pt-0 last:pb-0">
+                <div className="min-w-0">
+                  <p className="truncate font-medium text-foreground">{b.name}</p>
+                  <p className="truncate text-xs text-muted-foreground">{slugDomain(b.name)}</p>
+                </div>
+                <div className="flex items-center gap-3">
+                  <span className="text-sm tabular-nums text-muted-foreground">
+                    {(b.messageCount || 0).toLocaleString()} chats
+                  </span>
+                  <Badge variant="outline" className="border-success/30 bg-success/10 text-success">
+                    healthy
+                  </Badge>
                 </div>
               </div>
-              <div className="flex items-center gap-6 text-right">
-                <div>
-                  <p className="text-xs text-[#9aa7bd]">Messages</p>
-                  <p className="font-bold">{bot.messageCount || 0}</p>
+            ))}
+            {recent.length === 0 ? (
+              <p className="py-3 text-sm text-muted-foreground">No sites connected yet.</p>
+            ) : null}
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between">
+            <CardTitle className="font-display">Recently updated agents</CardTitle>
+            <Button asChild variant="ghost" size="sm">
+              <Link href="/agents">Open agents</Link>
+            </Button>
+          </CardHeader>
+          <CardContent className="divide-y divide-border">
+            {recent.slice(0, 4).map((b) => (
+              <Link
+                key={b.id}
+                href={`/chatbots/${b.id}`}
+                className="flex items-center justify-between py-3 first:pt-0 last:pb-0"
+              >
+                <div className="flex items-center gap-3">
+                  <span
+                    className="grid size-9 place-items-center rounded-full text-sm font-semibold text-white"
+                    style={{ background: `linear-gradient(135deg, ${b.primaryColor}, #3b82f6)` }}
+                  >
+                    {initials(b.name)}
+                  </span>
+                  <div>
+                    <p className="font-medium text-foreground">{b.name}</p>
+                    <p className="text-xs text-muted-foreground">Chatbot</p>
+                  </div>
                 </div>
-                <div>
-                  <p className="text-xs text-[#9aa7bd]">Leads</p>
-                  <p className="font-bold">{bot.leadCount || 0}</p>
+                <div className="flex items-center gap-3 text-xs text-muted-foreground">
+                  <span>{relativeTime(b.createdAt)}</span>
+                  <Badge variant="outline" className="border-success/30 bg-success/10 text-success">
+                    active
+                  </Badge>
                 </div>
-                <span className="text-[#9aa7bd] text-sm">→</span>
-              </div>
-            </Link>
-          ))}
-        </div>
-      )}
+              </Link>
+            ))}
+            {recent.length === 0 ? (
+              <p className="py-3 text-sm text-muted-foreground">No agents yet.</p>
+            ) : null}
+          </CardContent>
+        </Card>
+      </div>
     </div>
   );
 }

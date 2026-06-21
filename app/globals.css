@@ -3,6 +3,50 @@
 @tailwind utilities;
 
 :root {
+  /* legacy brand vars (kept) */
   --brand: #2d9d6f;
   --brand2: #3b82f6;
+
+  /* design tokens — HSL channels (alpha-aware via tailwind) */
+  --background: 222 44% 6%;
+  --foreground: 214 40% 95%;
+  --card: 218 42% 9%;
+  --card-foreground: 214 40% 95%;
+  --popover: 218 42% 9%;
+  --popover-foreground: 214 40% 95%;
+  --primary: 217 91% 60%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 222 35% 14%;
+  --secondary-foreground: 214 40% 95%;
+  --muted: 222 35% 14%;
+  --muted-foreground: 217 18% 65%;
+  --accent: 222 35% 14%;
+  --accent-foreground: 214 40% 96%;
+  --destructive: 0 72% 51%;
+  --destructive-foreground: 0 0% 100%;
+  --success: 157 64% 40%;
+  --success-foreground: 0 0% 100%;
+  --warning: 38 92% 50%;
+  --warning-foreground: 38 60% 12%;
+  --border: 222 30% 18%;
+  --input: 222 30% 18%;
+  --ring: 217 91% 60%;
+  --chart-1: 217 91% 60%;
+  --chart-2: 173 58% 45%;
+  --chart-3: 157 64% 45%;
+  --chart-4: 38 92% 55%;
+  --chart-5: 262 70% 66%;
+
+  /* full-color aliases for libraries that read CSS vars directly (recharts) */
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-card: hsl(var(--card));
+  --color-popover: hsl(var(--popover));
+  --color-border: hsl(var(--border));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-chart-1: hsl(var(--chart-1));
+  --color-chart-2: hsl(var(--chart-2));
+  --color-chart-3: hsl(var(--chart-3));
+  --color-chart-4: hsl(var(--chart-4));
+  --color-chart-5: hsl(var(--chart-5));
 }
