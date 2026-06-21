@@ -69,6 +69,8 @@
   .app{display:grid;grid-template-columns:190px 1fr;min-height:clamp(320px,52vh,520px)}
   .side{background:#0c1220;border-right:1px solid var(--line);padding:1rem .7rem;display:flex;flex-direction:column;gap:.15rem}
   .side .brand{display:flex;align-items:center;gap:.5em;font-weight:800;font-size:.92rem;padding:.2rem .5rem 1rem}
+  .side .grp{font-size:.56rem;text-transform:uppercase;letter-spacing:.16em;color:var(--muted);font-weight:700;padding:.7rem .6rem .25rem}
+  .side .grp:first-of-type{padding-top:.2rem}
   .nav{display:flex;align-items:center;gap:.65em;padding:.5em .7em;border-radius:8px;font-size:.82rem;color:var(--muted)}
   .nav.on{background:linear-gradient(100deg,rgba(45,157,111,.18),rgba(59,130,246,.12));color:var(--ink);border:1px solid var(--line)}
   .nav .ic{width:15px;height:15px;border-radius:4px;background:#1b2540}
@@ -190,31 +192,40 @@
       <div class="app">
         <aside class="side">
           <div class="brand"><span class="mark" style="width:22px;height:22px;border-radius:7px;background:linear-gradient(135deg,var(--brand),var(--brand2));display:grid;place-items:center;font-size:.7rem">C</span> CM Chatbots</div>
+          <div class="grp">Workspace</div>
           <div class="nav on"><span class="ic"></span> Overview</div>
-          <div class="nav"><span class="ic"></span> Chatbots</div>
-          <div class="nav"><span class="ic"></span> Knowledge</div>
-          <div class="nav"><span class="ic"></span> Leads</div>
+          <div class="nav"><span class="ic"></span> Agents</div>
+          <div class="nav"><span class="ic"></span> Sites</div>
           <div class="nav"><span class="ic"></span> Analytics</div>
-          <div class="nav"><span class="ic"></span> Integration</div>
+          <div class="grp">Operate</div>
+          <div class="nav"><span class="ic"></span> Chatbots</div>
+          <div class="nav"><span class="ic"></span> Leads</div>
+          <div class="nav"><span class="ic"></span> Ideas</div>
+          <div class="grp">Configure</div>
+          <div class="nav"><span class="ic"></span> Integrations</div>
+          <div class="nav"><span class="ic"></span> Settings</div>
         </aside>
         <div class="main">
           <div class="mh">
             <div>
               <small>Workspace · Childcare Marketing</small>
               <h4>Good morning</h4>
-              <p>3 nurseries live, 284 leads captured this month. CMG 2 is still processing its knowledge base.</p>
+              <p>4 agents answering across your sites, 284 leads captured. Draft a new agent or check today's conversations.</p>
             </div>
-            <button class="btn">+ New chatbot</button>
+            <div class="row" style="gap:.5rem">
+              <button class="btn ghost">View analytics</button>
+              <button class="btn">✦ Draft a new agent</button>
+            </div>
           </div>
           <div class="stats">
-            <div class="st"><div class="l">Active bots</div><div class="v">3</div><div class="d">+1 this month</div></div>
-            <div class="st"><div class="l">Leads captured</div><div class="v">284</div><div class="d">+22%</div></div>
-            <div class="st"><div class="l">Messages · 30d</div><div class="v">4,102</div><div class="d">+18%</div></div>
-            <div class="st"><div class="l">Avg resolution</div><div class="v">76%</div><div class="d">+5 pts</div></div>
+            <div class="st"><div class="l">Conversations</div><div class="v">4,102</div><div class="d">+18%</div></div>
+            <div class="st"><div class="l">Active agents</div><div class="v">4</div><div class="d">+1</div></div>
+            <div class="st"><div class="l">Leads captured</div><div class="v">284</div><div class="d">+4</div></div>
+            <div class="st"><div class="l">Live sites</div><div class="v">4</div><div class="d">healthy</div></div>
           </div>
           <div class="panels">
             <div class="pn">
-              <h5>Messages · last 30 days</h5>
+              <h5>Conversations · last 30 days</h5>
               <div class="chart">
                 <span style="height:38%"></span><span style="height:52%"></span><span style="height:46%"></span>
                 <span style="height:60%"></span><span style="height:55%"></span><span style="height:74%"></span>
@@ -223,12 +234,12 @@
               </div>
             </div>
             <div class="pn">
-              <h5>Top parent questions</h5>
+              <h5>Top intents</h5>
               <div class="intent">
-                <div><div class="row2"><span>Fees &amp; funding</span><span>1,480</span></div><div class="meter"><i style="width:100%"></i></div></div>
-                <div><div class="row2"><span>Spaces available</span><span>1,120</span></div><div class="meter"><i style="width:76%"></i></div></div>
-                <div><div class="row2"><span>Ofsted rating</span><span>740</span></div><div class="meter"><i style="width:50%"></i></div></div>
-                <div><div class="row2"><span>SEND provision</span><span>410</span></div><div class="meter"><i style="width:28%"></i></div></div>
+                <div><div class="row2"><span>Pricing &amp; fees</span><span>1,284</span></div><div class="meter"><i style="width:100%"></i></div></div>
+                <div><div class="row2"><span>Opening hours</span><span>942</span></div><div class="meter"><i style="width:73%"></i></div></div>
+                <div><div class="row2"><span>Availability / waitlist</span><span>731</span></div><div class="meter"><i style="width:57%"></i></div></div>
+                <div><div class="row2"><span>Book a tour</span><span>412</span></div><div class="meter"><i style="width:32%"></i></div></div>
               </div>
             </div>
           </div>
@@ -297,24 +308,29 @@
     <div class="window" style="max-width:980px">
       <div class="chrome">
         <i style="background:#ff5f56"></i><i style="background:#ffbd2e"></i><i style="background:#27c93f"></i>
-        <span class="url">app.childcaremarketing.co.uk/knowledge</span>
+        <span class="url">app.childcaremarketing.co.uk/chatbots/childcare-marketing</span>
       </div>
       <div class="app" style="grid-template-columns:185px 1fr;min-height:clamp(300px,46vh,460px)">
         <aside class="side">
           <div class="brand"><span class="mark" style="width:22px;height:22px;border-radius:7px;background:linear-gradient(135deg,var(--brand),var(--brand2));display:grid;place-items:center;font-size:.7rem">C</span> CM Chatbots</div>
+          <div class="grp">Workspace</div>
           <div class="nav"><span class="ic"></span> Overview</div>
-          <div class="nav"><span class="ic"></span> Chatbots</div>
-          <div class="nav on"><span class="ic"></span> Knowledge</div>
+          <div class="nav"><span class="ic"></span> Agents</div>
+          <div class="grp">Operate</div>
+          <div class="nav on"><span class="ic"></span> Chatbots</div>
+          <div class="subnav">↳ Setup</div>
+          <div class="subnav on">↳ Knowledge</div>
+          <div class="subnav">↳ Embed</div>
           <div class="nav"><span class="ic"></span> Leads</div>
-          <div class="nav"><span class="ic"></span> Analytics</div>
-          <div class="nav"><span class="ic"></span> Integration</div>
+          <div class="grp">Configure</div>
+          <div class="nav"><span class="ic"></span> Integrations</div>
         </aside>
         <div class="main">
           <div class="mh" style="margin-bottom:.6rem">
             <div>
-              <small>Workspace · Childcare Marketing</small>
+              <small>Chatbots · Childcare Marketing · Knowledge tab</small>
               <h4>Knowledge</h4>
-              <p>Upload files to use as context for your chatbots. Up to 3 files can be attached per chatbot.</p>
+              <p>Upload files to use as context for this agent. Up to 3 files can be attached per chatbot.</p>
             </div>
           </div>
           <div class="kb-two">
@@ -372,18 +388,22 @@
     <div class="window">
       <div class="chrome">
         <i style="background:#ff5f56"></i><i style="background:#ffbd2e"></i><i style="background:#27c93f"></i>
-        <span class="url">app.childcaremarketing.co.uk/bots/childcare-marketing/embed</span>
+        <span class="url">app.childcaremarketing.co.uk/chatbots/childcare-marketing</span>
       </div>
       <div class="app">
         <aside class="side">
           <div class="brand"><span class="mark" style="width:22px;height:22px;border-radius:7px;background:linear-gradient(135deg,var(--brand),var(--brand2));display:grid;place-items:center;font-size:.7rem">C</span> CM Chatbots</div>
+          <div class="grp">Workspace</div>
           <div class="nav"><span class="ic"></span> Overview</div>
+          <div class="nav"><span class="ic"></span> Agents</div>
+          <div class="grp">Operate</div>
           <div class="nav on"><span class="ic"></span> Chatbots</div>
+          <div class="subnav">↳ Setup</div>
+          <div class="subnav">↳ Knowledge</div>
           <div class="subnav on">↳ Embed</div>
-          <div class="nav"><span class="ic"></span> Knowledge</div>
           <div class="nav"><span class="ic"></span> Leads</div>
-          <div class="nav"><span class="ic"></span> Analytics</div>
-          <div class="nav"><span class="ic"></span> Integration</div>
+          <div class="grp">Configure</div>
+          <div class="nav"><span class="ic"></span> Integrations</div>
         </aside>
         <div class="main">
           <div class="mh">
@@ -569,7 +589,61 @@
     </ul>
   </section>
 
-  <!-- ⑬ THE ASK -->
+  <!-- ⑬ BUSINESS MODEL — recurring revenue -->
+  <section class="slide">
+    <div class="eyebrow">Business model</div>
+    <h2>Not a one-off build. <span class="grad">Recurring revenue.</span></h2>
+    <p class="lead">Every nursery pays a monthly subscription per bot — billed by us, managed by us. Predictable MRR that grows with every client we onboard.</p>
+    <div class="grid g3" style="margin-top:1.4rem">
+      <div class="card">
+        <span class="tag">Starter</span>
+        <div class="kpi" style="font-size:clamp(1.6rem,3.5vw,2.6rem);margin-top:.4rem">£39<small>per nursery / month</small></div>
+        <ul class="clean" style="margin-top:.8rem">
+          <li style="font-size:.92rem;padding:.35em 0"><span class="check">✓</span> 1 bot, up to 500 messages/mo</li>
+          <li style="font-size:.92rem;padding:.35em 0"><span class="check">✓</span> Knowledge upload + lead capture</li>
+          <li style="font-size:.92rem;padding:.35em 0"><span class="check">✓</span> GPT-4o mini tier</li>
+        </ul>
+      </div>
+      <div class="card" style="border-color:var(--brand)">
+        <span class="tag ok">Growth · most popular</span>
+        <div class="kpi" style="font-size:clamp(1.6rem,3.5vw,2.6rem);margin-top:.4rem">£89<small>per nursery / month</small></div>
+        <ul class="clean" style="margin-top:.8rem">
+          <li style="font-size:.92rem;padding:.35em 0"><span class="check">✓</span> Unlimited messages</li>
+          <li style="font-size:.92rem;padding:.35em 0"><span class="check">✓</span> Full analytics + Claude Sonnet</li>
+          <li style="font-size:.92rem;padding:.35em 0"><span class="check">✓</span> Priority support</li>
+        </ul>
+      </div>
+      <div class="card">
+        <span class="tag">Premium</span>
+        <div class="kpi" style="font-size:clamp(1.6rem,3.5vw,2.6rem);margin-top:.4rem">£149<small>per nursery / month</small></div>
+        <ul class="clean" style="margin-top:.8rem">
+          <li style="font-size:.92rem;padding:.35em 0"><span class="check">✓</span> Multi-site + custom branding</li>
+          <li style="font-size:.92rem;padding:.35em 0"><span class="check">✓</span> Featured directory listing included</li>
+          <li style="font-size:.92rem;padding:.35em 0"><span class="check">✓</span> Monthly insights report</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ⑬b SECOND REVENUE LINE — directory marketplace -->
+  <section class="slide">
+    <div class="eyebrow">Second revenue line</div>
+    <h2>A nursery directory parents search — <span class="grad">listings we sell.</span></h2>
+    <p class="lead">Beyond subscriptions: a public "Find a nursery near you" directory at childcaremarketing.co.uk, powered by the same bots. Nurseries pay for placement. Parents get instant answers. We own the marketplace.</p>
+    <div class="grid g3">
+      <div class="card"><h3>Featured listings</h3><p>Nurseries pay £25–£60/mo to rank at the top of local search results, with their AI bot embedded in the listing card.</p></div>
+      <div class="card"><h3>Pay-per-lead</h3><p>Every captured enquiry routed to a non-client nursery is a billable lead — a marketplace we monetise even for nurseries we don't yet manage.</p></div>
+      <div class="card"><h3>Sponsored regions</h3><p>Sell exclusive "top of borough" placement per postcode. Scarce inventory, premium price — recurring like ad space.</p></div>
+    </div>
+    <div class="grid g4" style="margin-top:1.4rem">
+      <div class="card"><div class="kpi">30<small>Nurseries · Growth tier</small></div></div>
+      <div class="card"><div class="kpi">£2,670<small>MRR from subscriptions</small></div><div class="delta">≈ £32K ARR</div></div>
+      <div class="card"><div class="kpi">£900<small>+ directory MRR (est.)</small></div><div class="delta">listings + leads</div></div>
+      <div class="card"><div class="kpi">~£43K<small>Blended ARR at 30 clients</small></div><div class="delta">grows per client</div></div>
+    </div>
+  </section>
+
+  <!-- ⑭ THE ASK -->
   <section class="slide">
     <div class="eyebrow">The ask</div>
     <h2>Greenlight 4 weeks of build time.</h2>
@@ -578,7 +652,7 @@
       <li><b>1.</b> 4 weeks of build time alongside normal client work.</li>
       <li><b>2.</b> ~£20 in OpenAI / Anthropic API credits for testing — Supabase and Vercel are both free tier.</li>
       <li><b>3.</b> 3 pilot nursery clients in June — free, for feedback and testimonials.</li>
-      <li><b>4.</b> Green light to offer it as a managed add-on from July onward.</li>
+      <li><b>4.</b> Green light to offer it as a managed monthly subscription from July onward — recurring revenue, plus directory-listing income.</li>
     </ul>
     <div class="quote grad" style="margin-top:2.2rem">"Every nursery we manage deserves a front door that never sleeps."</div>
   </section>
